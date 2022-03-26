@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Based Share</string>
     <string name="back_image">Background Image</string>
-    <string name="Welcome">Welcome to Based Share where all things music,games and film come together..Your one and only kinophile app</string>
+    <string name="Welcome">Welcome to Based Share. The place where Gamers, Kinophiles and Musicophiles all come together to share based ideas on their respective entertainment categories.</string>
+    <string name="Continue">Click the button below to join the community</string>
 </resources>
