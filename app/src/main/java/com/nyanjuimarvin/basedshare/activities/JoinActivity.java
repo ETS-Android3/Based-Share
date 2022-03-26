@@ -1,8 +1,10 @@
-package com.nyanjuimarvin.basedshare;
+package com.nyanjuimarvin.basedshare.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.nyanjuimarvin.basedshare.R;
 
 public class JoinActivity extends AppCompatActivity {
 

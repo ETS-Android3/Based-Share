@@ -3,4 +3,6 @@
     <string name="back_image">Background Image</string>
     <string name="Welcome">Welcome to Based Share. The place where Gamers, Kinophiles and Musicophiles all come together to share based ideas on their respective entertainment categories.</string>
     <string name="Continue">Click the button below to join the community</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

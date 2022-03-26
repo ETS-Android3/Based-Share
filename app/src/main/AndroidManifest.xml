@@ -10,10 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BasedShare">
         <activity
-            android:name=".FeedActivity"
+            android:name=".activities.DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".JoinActivity"
+            android:name=".activities.FeedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.JoinActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
