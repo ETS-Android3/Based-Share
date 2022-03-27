@@ -16,5 +16,6 @@
     <string name="name">name...</string>
     <string name="Email">E-mail...</string>
     <string name="pass">Password...</string>
+    <string name="confirm">Confirm Password</string>
     <string name="join">Join The Community</string>
 </resources>
