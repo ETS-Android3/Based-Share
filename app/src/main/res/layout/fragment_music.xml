@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MovieFragment">
+    tools:context=".fragments.MovieFragment"
+    tools:viewBindingIgnore="false">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -21,6 +22,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -33,10 +35,10 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/music"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="60dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/music"
             android:textColor="@color/GreenYellow"
             android:textSize="34sp" />
 
@@ -44,11 +46,12 @@
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/amaranth_bold"
             android:layout_marginLeft="60dp"
             android:layout_marginTop="50dp"
+            android:fontFamily="@font/amaranth_bold"
             android:text="@string/musicDescription"
             android:textColor="@color/LightCyan"
             android:textSize="24sp" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

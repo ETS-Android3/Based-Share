@@ -351,6 +351,7 @@
     <color name="Bean_Red">#F75D59</color>
     <color name="Valentine_Red">#E55451</color>
     <color name="Shocking_Orange">#E55B3C</color>
+    <color name="cedarWoodFinish">#711700</color>
     <color name="Scarlet">#FF2400</color>
     <color name="Ruby_Red">#F62217</color>
     <color name="Ferrari_Red">#F70D1A</color>
@@ -440,4 +441,6 @@
     <color name="Pearl">#FDEEF4</color>
     <color name="SeaShell">#FFF5EE</color>
     <color name="Milk_White">#FEFCFF</color>
+    <color name="normalOpaque">#000000</color>
+    <color name="halfTransparent">#7F000000</color>
 </resources>

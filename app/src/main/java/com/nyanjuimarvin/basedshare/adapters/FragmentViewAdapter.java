@@ -29,9 +29,9 @@ public class FragmentViewAdapter extends FragmentStateAdapter {
           case 0:
               return new GameFragment();
           case 1:
-              return new MovieFragment();
-          case 2:
               return new MusicFragment();
+          case 2:
+              return new MovieFragment();
       }
       return new MusicFragment();
     }

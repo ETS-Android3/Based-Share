@@ -51,7 +51,7 @@
             android:fontFamily="@font/amaranth_bold"
             android:text="@string/gameDescription"
             android:textAllCaps="false"
-            android:textColor="@color/Platinum"
+            android:textColor="@color/Light_Cyan"
             android:textSize="24sp" />
     </LinearLayout>
 

@@ -9,13 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nyanjuimarvin.basedshare.R;
+import com.nyanjuimarvin.basedshare.databinding.FragmentMusicBinding;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link MusicFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MusicFragment extends Fragment {
+public class MusicFragment extends Fragment{
+
+    FragmentMusicBinding musicBinding;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,7 +63,8 @@ public class MusicFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        musicBinding = FragmentMusicBinding.inflate(getLayoutInflater());
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_movie, container, false);
+        return musicBinding.getRoot();
     }
 }

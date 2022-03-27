@@ -1,13 +1,10 @@
 package com.nyanjuimarvin.basedshare.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Lifecycle;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.nyanjuimarvin.basedshare.R;
@@ -23,14 +20,15 @@ public class DetailActivity extends FragmentActivity {
     private ActivityDetailBinding detailBinding;
 
     //Fragments Array
-    private final Fragment[] fragments = {new GameFragment(),new MovieFragment(),new MusicFragment()};;
+    private final Fragment[] fragments = {new GameFragment(), new MovieFragment(), new MusicFragment()};;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         FragmentManager fm = getSupportFragmentManager();
         detailBinding = ActivityDetailBinding.inflate(getLayoutInflater());
-        FragmentViewAdapter viewAdapter = new FragmentViewAdapter(fm,getLifecycle(),fragments);
+        FragmentViewAdapter viewAdapter = new FragmentViewAdapter(fm, getLifecycle(), fragments);
         detailBinding.detailPager.setAdapter(viewAdapter);
         View view = detailBinding.getRoot();
         setContentView(view);

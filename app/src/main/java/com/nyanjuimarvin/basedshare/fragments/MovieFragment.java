@@ -1,5 +1,6 @@
 package com.nyanjuimarvin.basedshare.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,8 +8,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.nyanjuimarvin.basedshare.R;
+import com.nyanjuimarvin.basedshare.activities.DetailActivity;
+import com.nyanjuimarvin.basedshare.activities.JoinActivity;
+import com.nyanjuimarvin.basedshare.databinding.FragmentMovieBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +21,8 @@ import com.nyanjuimarvin.basedshare.R;
  * create an instance of this fragment.
  */
 public class MovieFragment extends Fragment {
+
+    private FragmentMovieBinding movieBinding;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,7 +67,18 @@ public class MovieFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        movieBinding = FragmentMovieBinding.inflate(getLayoutInflater());
+        View view = movieBinding.getRoot();
+        movieBinding.goToRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), JoinActivity.class);
+                getActivity().startActivity(intent);
+                Toast.makeText(getActivity(), "Moving to register page", Toast.LENGTH_SHORT).show();
+            }
+        });
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_music, container, false);
+        return view;
     }
 }
