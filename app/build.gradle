@@ -45,4 +45,5 @@ dependencies {
     androidTestImplementation 'androidx.test:rules:1.4.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     testImplementation 'org.robolectric:robolectric:4.7.3'
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
 }
