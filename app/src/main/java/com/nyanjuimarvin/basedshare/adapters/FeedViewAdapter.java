@@ -25,6 +25,10 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.MyView
         this.feedList = feedList;
     }
 
+    //Item Click Listener
+
+
+
     //Inflate both layouts :: cardView and recyclerView
     @NonNull
     @Override

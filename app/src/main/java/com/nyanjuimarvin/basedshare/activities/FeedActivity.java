@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.TextView;
 
 import com.nyanjuimarvin.basedshare.R;
 import com.nyanjuimarvin.basedshare.adapters.FeedViewAdapter;
@@ -47,5 +49,13 @@ public class FeedActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(feedAdapter);
+        
+        //ItemClick Listener
+//        recyclerView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                String category = ((TextView)view).getText().toString();
+//            }
+//        });
     }
 }
