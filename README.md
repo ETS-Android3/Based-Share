@@ -3,9 +3,18 @@ An application where Gamers, Kinophiles and Musicophiles can share their prefere
 
 ## Samples
 ![image1](Screens/image.png)
-![image2](Screens/image%20(1).png)
+![image2](Screens/image%20(1).png|height 300px)
 ![image3](Screens/image%20(2).png)
 ![image4](Screens/image%20(4).png)
+
+
+<img src="https://github.com/Nyanjuimarvin/Based-Share/blob/master/Screens/image.png" width="250" height="250" />
+
+<img src="https://github.com/Nyanjuimarvin/Based-Share/blob/master/Screens/image%20(1).png" width="250" height="250" />
+
+<img src="https://github.com/Nyanjuimarvin/Based-Share/blob/master/Screens/image%20(2).pngb.com/Nyanjuimarvin/Based-Share/blob/master/Screens/image.png" width="250" height="250" />
+
+<img src="https://github.com/Nyanjuimarvin/Based-Share/blob/master/Screens/image%20(4).png" width="250" height="250" />
 
 ## Getting Started
 
