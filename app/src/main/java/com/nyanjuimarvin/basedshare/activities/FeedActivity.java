@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -34,7 +36,7 @@ public class FeedActivity extends AppCompatActivity {
 
         generalFeedsList = new ArrayList<>();
         generalFeedsList.add(new GeneralFeed("Nvidia RTX 3090 prices just dipped","Games","HackerSlasher3"));
-        generalFeedsList.add(new GeneralFeed("I have proof why Ryan Gosling is literally me","Kino","Nitwit5"));
+        generalFeedsList.add(new GeneralFeed("I have proof as to why Ryan Gosling is literally me","Kino","Nitwit5"));
         generalFeedsList.add(new GeneralFeed("Doom Eternal Quick switching on Console made simpler","Game","Makyr Khan"));
         generalFeedsList.add(new GeneralFeed("Discover the song around by Floral Shop","Music","anonmiusicus"));
         generalFeedsList.add(new GeneralFeed("It had me saying \"Let's see Paul Allen's Card\"","Kino","ALtUser9"));
@@ -55,6 +57,8 @@ public class FeedActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(feedAdapter);
+        Intent intent = getIntent();
+        String userName = intent.getStringExtra("userName");
 
     }
 }

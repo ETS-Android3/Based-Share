@@ -11,17 +11,20 @@
         android:theme="@style/Theme.BasedShare">
         <activity
             android:name=".activities.DetailActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/NoActionBarTheme"/>
         <activity
             android:name=".activities.FeedActivity"
             android:exported="false"
-            android:label="Feed"/>
+            android:label="Feed" />
         <activity
             android:name=".activities.JoinActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/NoActionBarTheme"/>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/NoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
