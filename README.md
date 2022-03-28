@@ -3,13 +3,21 @@ An application where Gamers, Kinophiles and Musicophiles can share their prefere
 
 ## Samples
 
-<img src="https://github.com/Nyanjuimarvin/Based-Share/blob/master/Screens/image.png"  height="250" />
+<table>
+  <tr>
+    <td>First Screen Page</td>
+     <td>Detail Page</td>
+     <td>Detail Page</td>
+     <td>Register Page</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Nyanjuimarvin/Based-Share/blob/master/Screens/image.png"  height="250" /></td>
+    <td><img src="https://github.com/Nyanjuimarvin/Based-Share/blob/master/Screens/image%20(1).png"  height="250" /></td>
+    <td><img src="https://github.com/Nyanjuimarvin/Based-Share/blob/master/Screens/image%20(2).png"  height="250" /></td>
+    <td><img src="https://github.com/Nyanjuimarvin/Based-Share/blob/master/Screens/image%20(4).png"  height="250" /></td>
+  </tr>
+ </table>
 
-<img src="https://github.com/Nyanjuimarvin/Based-Share/blob/master/Screens/image%20(1).png"  height="250" />
-
-<img src="https://github.com/Nyanjuimarvin/Based-Share/blob/master/Screens/image%20(2).png"  height="250" />
-
-<img src="https://github.com/Nyanjuimarvin/Based-Share/blob/master/Screens/image%20(4).png"  height="250" />
 
 ## Getting Started
 
