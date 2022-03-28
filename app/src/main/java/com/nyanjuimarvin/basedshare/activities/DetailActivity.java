@@ -1,5 +1,6 @@
 package com.nyanjuimarvin.basedshare.activities;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -15,7 +16,7 @@ import com.nyanjuimarvin.basedshare.fragments.MovieFragment;
 import com.nyanjuimarvin.basedshare.fragments.MusicFragment;
 
 //Fragment class : FragmentActivity ()
-public class DetailActivity extends FragmentActivity {
+public class DetailActivity extends AppCompatActivity {
 
     private ActivityDetailBinding detailBinding;
 

@@ -14,7 +14,8 @@
             android:exported="false" />
         <activity
             android:name=".activities.FeedActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Feed"/>
         <activity
             android:name=".activities.JoinActivity"
             android:exported="false" />

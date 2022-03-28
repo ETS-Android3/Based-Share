@@ -26,7 +26,7 @@
         android:id="@+id/detailViewButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="36dp"
         android:clickable="true"
         android:contentDescription="Next Page"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,6 +36,7 @@
         app:srcCompat="@drawable/icons8_arrow_96" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="600dp"
         app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
@@ -55,23 +56,25 @@
             android:textSize="60dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.032" />
+            app:layout_constraintVertical_bias="0.066" />
 
         <TextView
             android:id="@+id/welcometext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
             android:ellipsize="none"
             android:fontFamily="@font/amaranth_bold"
             android:gravity="center"
             android:text="@string/Welcome"
-            android:textColor="@color/Platinum"
-            android:textSize="20sp"
+            android:textColor="@color/Light_Cyan"
+            android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/textView6"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/logotext"
             app:layout_constraintVertical_bias="0.093" />
@@ -84,7 +87,7 @@
             android:fontFamily="@font/amaranth_bold"
             android:text="@string/Continue"
             android:textColor="@color/Cyan_or_Aqua"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
