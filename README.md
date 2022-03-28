@@ -2,11 +2,6 @@
 An application where Gamers, Kinophiles and Musicophiles can share their preferences and chat.
 
 ## Samples
-![image1](Screens/image.png)
-![image2](Screens/image%20(1).png|height 300px)
-![image3](Screens/image%20(2).png)
-![image4](Screens/image%20(4).png)
-
 
 <img src="https://github.com/Nyanjuimarvin/Based-Share/blob/master/Screens/image.png"  height="250" />
 
