@@ -24,9 +24,6 @@ public class JoinActivity extends AppCompatActivity {
 
         joinBinding.registerButton.setOnClickListener(new View.OnClickListener(){
 
-
-
-
             @Override
             public void onClick(View view) {
                 String userName = joinBinding.userName.getText().toString().trim();
