@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nyanjuimarvin.basedshare.R;
 import com.nyanjuimarvin.basedshare.adapters.FeedViewAdapter;
@@ -43,19 +44,17 @@ public class FeedActivity extends AppCompatActivity {
         generalFeedsList.add(new GeneralFeed("If you save Roggvir in Solitude, he still get's a heart attack..Lmaoo","Game","RestfulDraugr"));
 
         //Initialize Adapter
-        FeedViewAdapter feedAdapter = new FeedViewAdapter(this,generalFeedsList);
+        FeedViewAdapter feedAdapter = new FeedViewAdapter(this,generalFeedsList,new FeedViewAdapter.CustomOnItemClickListener(){
+            @Override
+            public void onItemClick(GeneralFeed feed) {
+                Toast.makeText(getApplicationContext(),feed.getCategory(), Toast.LENGTH_LONG).show();
+            }
+        });
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(feedAdapter);
-        
-        //ItemClick Listener
-//        recyclerView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                String category = ((TextView)view).getText().toString();
-//            }
-//        });
+
     }
 }
