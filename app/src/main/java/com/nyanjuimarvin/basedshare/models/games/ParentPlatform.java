@@ -1,0 +1,38 @@
+
+package com.nyanjuimarvin.basedshare.models.games;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+
+public class ParentPlatform {
+
+    @SerializedName("platform")
+    @Expose
+    private Platform__2 platform;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public ParentPlatform() {
+    }
+
+    /**
+     * 
+     * @param platform
+     */
+    public ParentPlatform(Platform__2 platform) {
+        super();
+        this.platform = platform;
+    }
+
+    public Platform__2 getPlatform() {
+        return platform;
+    }
+
+    public void setPlatform(Platform__2 platform) {
+        this.platform = platform;
+    }
+
+}
