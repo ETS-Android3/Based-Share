@@ -1,5 +1,5 @@
 
-package com.nyanjuimarvin.basedshare.models.games;
+package com.nyanjuimarvin.basedshare.models.game;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

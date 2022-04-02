@@ -1,11 +1,12 @@
 
-package com.nyanjuimarvin.basedshare.models.games;
+package com.nyanjuimarvin.basedshare.models.game;
+
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class Platform__2 {
+public class EsrbRating {
 
     @SerializedName("id")
     @Expose
@@ -16,25 +17,35 @@ public class Platform__2 {
     @SerializedName("slug")
     @Expose
     private String slug;
+    @SerializedName("name_en")
+    @Expose
+    private String nameEn;
+    @SerializedName("name_ru")
+    @Expose
+    private String nameRu;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public Platform__2() {
+    public EsrbRating() {
     }
 
     /**
      * 
+     * @param nameRu
      * @param name
      * @param id
+     * @param nameEn
      * @param slug
      */
-    public Platform__2(Integer id, String name, String slug) {
+    public EsrbRating(Integer id, String name, String slug, String nameEn, String nameRu) {
         super();
         this.id = id;
         this.name = name;
         this.slug = slug;
+        this.nameEn = nameEn;
+        this.nameRu = nameRu;
     }
 
     public Integer getId() {
@@ -59,6 +70,22 @@ public class Platform__2 {
 
     public void setSlug(String slug) {
         this.slug = slug;
+    }
+
+    public String getNameEn() {
+        return nameEn;
+    }
+
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
+    }
+
+    public String getNameRu() {
+        return nameRu;
+    }
+
+    public void setNameRu(String nameRu) {
+        this.nameRu = nameRu;
     }
 
 }

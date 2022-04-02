@@ -1,11 +1,11 @@
 
-package com.nyanjuimarvin.basedshare.models.games;
+package com.nyanjuimarvin.basedshare.models.game;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class Platform__1 {
+public class Platform__2 {
 
     @SerializedName("id")
     @Expose
@@ -21,7 +21,7 @@ public class Platform__1 {
      * No args constructor for use in serialization
      * 
      */
-    public Platform__1() {
+    public Platform__2() {
     }
 
     /**
@@ -30,7 +30,7 @@ public class Platform__1 {
      * @param id
      * @param slug
      */
-    public Platform__1(Integer id, String name, String slug) {
+    public Platform__2(Integer id, String name, String slug) {
         super();
         this.id = id;
         this.name = name;

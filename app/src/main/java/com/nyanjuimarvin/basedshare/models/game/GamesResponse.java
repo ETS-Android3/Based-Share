@@ -1,5 +1,5 @@
 
-package com.nyanjuimarvin.basedshare.models.games;
+package com.nyanjuimarvin.basedshare.models.game;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
