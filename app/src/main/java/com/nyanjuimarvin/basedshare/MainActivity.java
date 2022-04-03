@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.nyanjuimarvin.basedshare.activities.DetailActivity;
 import com.nyanjuimarvin.basedshare.databinding.ActivityMainBinding;
+import com.nyanjuimarvin.basedshare.oauth.SpotifyOauth;
 
 
 public class MainActivity extends AppCompatActivity {
