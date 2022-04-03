@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/Game"
+        android:title="@string/GameMenu"
+        android:icon="@drawable/outline_videogame_asset_white_24dp"/>
+    <item
+        android:id="@+id/movie"
+        android:title="@string/movieMenu"
+        android:icon="@drawable/outline_movie_white_24dp"/>
+    <item
+        android:id="@+id/music"
+        android:title="@string/musicMenu"
+        android:icon="@drawable/outline_music_note_white_24dp"/>
+
+    <item
+        android:id="@+id/account"
+        android:title="@string/accountMenu"
+        android:icon="@drawable/outline_account_circle_white_24dp"/>
+</menu>

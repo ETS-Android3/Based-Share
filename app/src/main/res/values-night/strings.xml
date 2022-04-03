@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="movieMenu">Movie</string>
+    <string name="GameMenu">Game</string>
+    <string name="musicMenu">Music</string>
+    <string name="accountMenu">Account</string>
+</resources>

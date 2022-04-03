@@ -18,4 +18,8 @@
     <string name="pass">Password...</string>
     <string name="confirm">Confirm Password</string>
     <string name="join">Join The Community</string>
+    <string name="movieMenu">Movie</string>
+    <string name="GameMenu">Game</string>
+    <string name="musicMenu">Music</string>
+    <string name="accountMenu">Account</string>
 </resources>

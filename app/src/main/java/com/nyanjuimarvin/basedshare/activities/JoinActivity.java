@@ -57,7 +57,7 @@ public class JoinActivity extends AppCompatActivity {
                     joinBinding.confirmPassword.setError("Password does not match");
                     Toast.makeText(getApplicationContext(),"Passwords do not match",Toast.LENGTH_LONG).show();
                 } else {
-                    Intent intent = new Intent(getApplicationContext(), FeedActivity.class);
+                    Intent intent = new Intent(getApplicationContext(),GameActivity.class);
                     startActivity(intent);
                     intent.putExtra("userName", userName);
 

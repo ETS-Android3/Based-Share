@@ -16,10 +16,12 @@
         <entry key="app/src/main/res/layout/activity_game.xml" value="0.13385416666666666" />
         <entry key="app/src/main/res/layout/activity_join.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_music.xml" value="0.13385416666666666" />
         <entry key="app/src/main/res/layout/fragment_game.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_general_feed.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_movie.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_music.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/bottom_navigation_1.xml" value="0.15789473684210525" />
       </map>
     </option>
   </component>
