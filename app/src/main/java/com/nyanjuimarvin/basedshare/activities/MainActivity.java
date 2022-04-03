@@ -1,4 +1,4 @@
-package com.nyanjuimarvin.basedshare;
+package com.nyanjuimarvin.basedshare.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,9 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.nyanjuimarvin.basedshare.activities.DetailActivity;
 import com.nyanjuimarvin.basedshare.databinding.ActivityMainBinding;
-import com.nyanjuimarvin.basedshare.oauth.SpotifyOauth;
 
 
 public class MainActivity extends AppCompatActivity {
