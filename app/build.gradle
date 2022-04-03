@@ -49,6 +49,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
-    implementation 'org.parceler:parceler-api:1.1.12'
     annotationProcessor 'org.parceler:parceler:1.1.12'
+    implementation 'org.parceler:parceler-api:1.1.12'
+    implementation 'se.michaelthelin.spotify:spotify-web-api-java:7.0.0'
+    implementation 'com.spotify.android:auth:1.2.5' // Maven dependency
+    implementation 'androidx.browser:browser:1.4.0'
 }

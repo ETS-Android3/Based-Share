@@ -3,7 +3,10 @@ package com.nyanjuimarvin.basedshare.constants;
 public class Constants {
     public static final String SPOTIFY_BASE_URL = "https://api.spotify.com/v1/";
     public static final String MOVIE_DB_BASE_URL = "https://api.themoviedb.org/3/";
+    public static final String IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original/";
     public static final String RAWG_BASE_URL = "https://api.rawg.io/api/";
+
+    //Spotify  authentication
     public static final String SPOTIFY_AUTH_URL = "https://accounts.spotify.com/";
     public static final String CLIENT_ID = "e86c3eb22a7644169b9f90ed7dee90ab";
     public static final String CLIENT_SECRET = "f92a1c067edd4ccab9843ccfc18e63ae";
