@@ -26,17 +26,19 @@ public class GameActivity extends AppCompatActivity {
         //Set Game view selected
         gameBinding.bottomNavigation.setSelectedItemId(R.id.Game);
 
+        //Bottom Navigation
         gameBinding.bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.Game:
-                        return true;
 
                     case R.id.movie:
                         startActivity(new Intent(getApplicationContext(),FilmActivity.class));
                         overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.Game:
                         return true;
 
                     case R.id.music:
