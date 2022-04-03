@@ -9,6 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nyanjuimarvin.basedshare.R;
+import com.nyanjuimarvin.basedshare.databinding.FragmentGetGameBinding;
+import com.nyanjuimarvin.basedshare.endpoints.GameEndpoint;
+import com.nyanjuimarvin.basedshare.models.game.GamesResponse;
+import com.nyanjuimarvin.basedshare.retrofit.GameClient;
+
+import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +26,8 @@ import com.nyanjuimarvin.basedshare.R;
  * create an instance of this fragment.
  */
 public class GetGameFragment extends Fragment {
+
+    private FragmentGetGameBinding getGameBinding;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +73,32 @@ public class GetGameFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_get_game, container, false);
+        getGameBinding = FragmentGetGameBinding.inflate(getLayoutInflater());
+        View view = getGameBinding.getRoot();
+
+        getGameBinding.gamesButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                String term = getGameBinding.searchGame.getText().toString().trim();
+
+                GameEndpoint gameEndpoint = GameClient.getGameClient();
+
+                Call<GamesResponse> call = gameEndpoint.getGames(term);
+
+                call.enqueue(new Callback<GamesResponse>(){
+
+                    @Override
+                    public void onResponse(Call<GamesResponse> call, Response<GamesResponse> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<GamesResponse> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
+        return view;
     }
 }

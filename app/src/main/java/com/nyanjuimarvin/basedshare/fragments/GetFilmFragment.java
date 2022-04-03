@@ -9,6 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nyanjuimarvin.basedshare.R;
+import com.nyanjuimarvin.basedshare.databinding.FragmentGetFilmBinding;
+import com.nyanjuimarvin.basedshare.endpoints.FilmEndpoint;
+import com.nyanjuimarvin.basedshare.models.film.FilmResponse;
+import com.nyanjuimarvin.basedshare.retrofit.FilmClient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +24,8 @@ import com.nyanjuimarvin.basedshare.R;
  * create an instance of this fragment.
  */
 public class GetFilmFragment extends Fragment {
+
+    private FragmentGetFilmBinding getFilmBinding;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +71,33 @@ public class GetFilmFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_get_film, container, false);
+
+        getFilmBinding = FragmentGetFilmBinding.inflate(getLayoutInflater());
+        View view = getFilmBinding.getRoot();
+
+        getFilmBinding.filmButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                String term = getFilmBinding.filmSearch.getText().toString().trim();
+
+                FilmEndpoint filmEndpoint = FilmClient.getFilmClient();
+
+                Call<FilmResponse> call = filmEndpoint.getFilms(term);
+
+                call.enqueue(new Callback<FilmResponse>(){
+
+                    @Override
+                    public void onResponse(Call<FilmResponse> call, Response<FilmResponse> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<FilmResponse> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
+        return view;
     }
 }
