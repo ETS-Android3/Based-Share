@@ -29,6 +29,7 @@ public class FilmActivity extends AppCompatActivity {
         View view = filmBinding.getRoot();
         setContentView(view);
 
+        filmBinding.bottomNavigation.setSelectedItemId(R.id.movie);
         filmBinding.bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @SuppressLint("NonConstantResourceId")
             @Override

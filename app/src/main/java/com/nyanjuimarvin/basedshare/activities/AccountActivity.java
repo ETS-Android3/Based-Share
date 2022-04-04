@@ -23,6 +23,7 @@ public class AccountActivity extends AppCompatActivity {
         View view = accountBinding.getRoot();
         setContentView(view);
 
+        accountBinding.bottomNavigation.setSelectedItemId(R.id.account);
         accountBinding.bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @SuppressLint("NonConstantResourceId")
             @Override

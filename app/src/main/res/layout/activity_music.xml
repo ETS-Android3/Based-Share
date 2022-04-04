@@ -7,27 +7,26 @@
     tools:context=".activities.MusicActivity"
     tools:viewBindingIgnore="false">
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Music Activity"
-        android:textSize="48dp"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/musicPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_width="409dp"
-        android:layout_height="100dp"
         android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:itemBackground="@color/teal_700"
+        app:itemIconTint="@drawable/bottom_navigation_state_color"
+        app:itemTextColor="@drawable/bottom_navigation_state_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:itemBackground="@color/teal_700"
-        app:itemIconTint="@drawable/bottom_navigation_state_color"
-        app:itemTextColor="@drawable/bottom_navigation_state_color"
-        app:menu="@menu/bottom_navigation_1"/>
+        app:menu="@menu/bottom_navigation_1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

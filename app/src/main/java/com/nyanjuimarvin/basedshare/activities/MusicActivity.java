@@ -25,6 +25,7 @@ public class MusicActivity extends AppCompatActivity {
         View view = musicBinding.getRoot();
         setContentView(view);
 
+        musicBinding.bottomNavigation.setSelectedItemId(R.id.music);
         //Bottom Navigation
         musicBinding.bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @SuppressLint("NonConstantResourceId")
