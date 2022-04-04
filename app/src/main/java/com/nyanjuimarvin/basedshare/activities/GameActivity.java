@@ -2,6 +2,7 @@ package com.nyanjuimarvin.basedshare.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.view.View;
 
 import com.google.android.material.navigation.NavigationBarView;
 import com.nyanjuimarvin.basedshare.R;
+import com.nyanjuimarvin.basedshare.adapters.GameActivityAdapter;
 import com.nyanjuimarvin.basedshare.databinding.ActivityGameBinding;
 
 public class GameActivity extends AppCompatActivity {
@@ -20,6 +22,9 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         gameBinding = ActivityGameBinding.inflate(getLayoutInflater());
+        FragmentManager fm = getSupportFragmentManager();
+        GameActivityAdapter gameActivityAdapter = new GameActivityAdapter(fm,getLifecycle());
+        gameBinding.gameViewPager.setAdapter(gameActivityAdapter);
         View view = gameBinding.getRoot();
         setContentView(view);
 

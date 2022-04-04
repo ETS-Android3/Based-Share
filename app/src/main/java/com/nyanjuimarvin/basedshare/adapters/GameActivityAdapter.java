@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.nyanjuimarvin.basedshare.fragments.GameFragment;
+import com.nyanjuimarvin.basedshare.fragments.GetGameFragment;
 
 public class GameActivityAdapter extends FragmentStateAdapter {
     public GameActivityAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
@@ -18,11 +18,11 @@ public class GameActivityAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        return new GameFragment();
+        return new GetGameFragment();
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return 1;
     }
 }

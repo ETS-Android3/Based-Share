@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.nyanjuimarvin.basedshare.fragments.GetFilmFragment;
 import com.nyanjuimarvin.basedshare.fragments.MovieFragment;
 
 public class FilmActivityAdapter extends FragmentStateAdapter {
@@ -17,11 +18,11 @@ public class FilmActivityAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        return new MovieFragment();
+        return new GetFilmFragment();
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return 1;
     }
 }

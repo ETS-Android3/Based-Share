@@ -1,5 +1,6 @@
 package com.nyanjuimarvin.basedshare.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nyanjuimarvin.basedshare.R;
+import com.nyanjuimarvin.basedshare.activities.GameResultsActivity;
 import com.nyanjuimarvin.basedshare.databinding.FragmentGetGameBinding;
 import com.nyanjuimarvin.basedshare.endpoints.GameEndpoint;
 import com.nyanjuimarvin.basedshare.models.game.GamesResponse;
@@ -79,24 +81,9 @@ public class GetGameFragment extends Fragment {
         getGameBinding.gamesButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                String term = getGameBinding.searchGame.getText().toString().trim();
-
-                GameEndpoint gameEndpoint = GameClient.getGameClient();
-
-                Call<GamesResponse> call = gameEndpoint.getGames(term);
-
-                call.enqueue(new Callback<GamesResponse>(){
-
-                    @Override
-                    public void onResponse(Call<GamesResponse> call, Response<GamesResponse> response) {
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<GamesResponse> call, Throwable t) {
-
-                    }
-                });
+                Intent intent = new Intent(getContext(), GameResultsActivity.class);
+                intent.putExtra("term",getGameBinding.searchGame.getText().toString().trim());
+                startActivity(intent);
             }
         });
         return view;

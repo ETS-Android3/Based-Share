@@ -1,5 +1,6 @@
 package com.nyanjuimarvin.basedshare.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nyanjuimarvin.basedshare.R;
+import com.nyanjuimarvin.basedshare.activities.FilmActivity;
 import com.nyanjuimarvin.basedshare.databinding.FragmentGetFilmBinding;
 import com.nyanjuimarvin.basedshare.endpoints.FilmEndpoint;
 import com.nyanjuimarvin.basedshare.models.film.FilmResponse;
@@ -78,24 +80,9 @@ public class GetFilmFragment extends Fragment {
         getFilmBinding.filmButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                String term = getFilmBinding.filmSearch.getText().toString().trim();
-
-                FilmEndpoint filmEndpoint = FilmClient.getFilmClient();
-
-                Call<FilmResponse> call = filmEndpoint.getFilms(term);
-
-                call.enqueue(new Callback<FilmResponse>(){
-
-                    @Override
-                    public void onResponse(Call<FilmResponse> call, Response<FilmResponse> response) {
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<FilmResponse> call, Throwable t) {
-
-                    }
-                });
+                Intent intent = new Intent(getContext(), FilmActivity.class);
+                intent.putExtra("term",getFilmBinding.filmSearch.getText().toString().trim());
+                startActivity(intent);
             }
         });
         return view;
