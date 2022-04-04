@@ -8,9 +8,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.nyanjuimarvin.basedshare.R;
 import com.nyanjuimarvin.basedshare.activities.FilmActivity;
+import com.nyanjuimarvin.basedshare.activities.FilmResultsActivity;
 import com.nyanjuimarvin.basedshare.databinding.FragmentGetFilmBinding;
 import com.nyanjuimarvin.basedshare.endpoints.FilmEndpoint;
 import com.nyanjuimarvin.basedshare.models.film.FilmResponse;
@@ -80,8 +82,9 @@ public class GetFilmFragment extends Fragment {
         getFilmBinding.filmButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), FilmActivity.class);
+                Intent intent = new Intent(getContext(), FilmResultsActivity.class);
                 intent.putExtra("term",getFilmBinding.filmSearch.getText().toString().trim());
+                Toast.makeText(getContext(),getFilmBinding.filmSearch.getText().toString().trim(),Toast.LENGTH_LONG).show();
                 startActivity(intent);
             }
         });
