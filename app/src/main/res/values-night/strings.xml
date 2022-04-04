@@ -4,4 +4,7 @@
     <string name="GameMenu">Game</string>
     <string name="musicMenu">Music</string>
     <string name="accountMenu">Account</string>
+    <string name="search">search</string>
+    <string name="movie_or_tv_show_name">movie or tv show name</string>
+    <string name="search_movies_shows">Search Movies/Shows</string>
 </resources>

@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BasedShare">
         <activity
+            android:name=".activities.MusicResultsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.FilmResultsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.GameResultsActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.AccountActivity"
             android:exported="false" />
         <activity
