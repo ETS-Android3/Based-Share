@@ -5,6 +5,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.nyanjuimarvin.basedshare.R;
 import com.nyanjuimarvin.basedshare.databinding.FragmentGameCardBinding;
 import com.nyanjuimarvin.basedshare.models.game.Result;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -41,6 +44,14 @@ public class GameRecyclerAdapter extends RecyclerView.Adapter<GameRecyclerAdapte
 
     @Override
     public void onBindViewHolder(@NonNull GameRecyclerAdapter.GameViewHolder holder, int position) {
+        Result result = gameResults.get(position);
+        Picasso.get().load(result.getBackgroundImage()).into(holder.gameImage);
+        holder.gameName.setText(result.getName());
+        holder.gameRelease.setText(result.getReleased());
+        holder.gameRating.setText(result.getEsrbRating().getName());
+        holder.metacritic.setText(String.format("%s",result.getMetacritic()));
+//        holder.gameRating.setText(String.format("%s / %s",Double.toString(result.getRating()),Double.toString(result.getRatingTop())));
+        holder.bindView(result,listener);
 
     }
 
@@ -51,8 +62,19 @@ public class GameRecyclerAdapter extends RecyclerView.Adapter<GameRecyclerAdapte
 
     public static class GameViewHolder extends RecyclerView.ViewHolder{
 
+        private ImageView gameImage;
+        private TextView gameName;
+        private TextView gameRelease;
+        private TextView gameRating;
+        private TextView metacritic;
+
         public GameViewHolder(@NonNull View itemView) {
             super(itemView);
+            gameImage = itemView.findViewById(R.id.gameImage);
+            gameName = itemView.findViewById(R.id.gameNameText);
+            gameRelease = itemView.findViewById(R.id.firstReleaseDateText);
+            gameRating = itemView.findViewById(R.id.gameRatingText);
+            metacritic = itemView.findViewById(R.id.metacriticText);
         }
 
         public void bindView(final Result result,final GameClickListener listener){

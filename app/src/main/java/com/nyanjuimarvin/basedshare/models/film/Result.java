@@ -1,6 +1,8 @@
 
 package com.nyanjuimarvin.basedshare.models.film;
 
+import static com.nyanjuimarvin.basedshare.constants.Constants.IMAGE_BASE_URL;
+
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -97,7 +99,8 @@ public class Result {
      */
     public Result(String backdropPath, String firstAirDate, List<Integer> genreIds, Integer id, String mediaType, String name, List<String> originCountry, String originalLanguage, String originalName, String overview, Double popularity, String posterPath, Integer voteAverage, Integer voteCount, Boolean adult, String originalTitle, String releaseDate, String title, Boolean video) {
         super();
-        this.backdropPath = backdropPath;
+        //Add original specifier in image path
+        this.backdropPath = IMAGE_BASE_URL + backdropPath;
         this.firstAirDate = firstAirDate;
         this.genreIds = genreIds;
         this.id = id;

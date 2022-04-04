@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.nyanjuimarvin.basedshare.R;
 import com.nyanjuimarvin.basedshare.databinding.FragmentMovieCardBinding;
 import com.nyanjuimarvin.basedshare.models.film.Result;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -41,7 +44,13 @@ public class FilmRecyclerAdapter extends RecyclerView.Adapter<FilmRecyclerAdapte
 
     @Override
     public void onBindViewHolder(@NonNull FilmRecyclerAdapter.FilmViewHolder holder, int position) {
-
+        Result result = filmResults.get(position);
+        Picasso.get().load(result.getBackdropPath()).into(holder.filmImage);
+        holder.filmTitle.setText(result.getName());
+        holder.filmRelease.setText(result.getFirstAirDate());
+        holder.filmType.setText(result.getMediaType());
+        holder.filmRating.setText(result.getVoteAverage());
+        holder.bindView(result,listener);
     }
 
     @Override
@@ -51,8 +60,19 @@ public class FilmRecyclerAdapter extends RecyclerView.Adapter<FilmRecyclerAdapte
 
     public static class FilmViewHolder extends RecyclerView.ViewHolder{
 
+        private ImageView filmImage;
+        private TextView filmTitle;
+        private TextView filmRelease;
+        private TextView filmType;
+        private TextView filmRating;
+
         public FilmViewHolder(@NonNull View itemView) {
             super(itemView);
+            filmImage = itemView.findViewById(R.id.filmImage);
+            filmTitle = itemView.findViewById(R.id.filmNameText);
+            filmRelease = itemView.findViewById(R.id.releaseDateText);
+            filmType = itemView.findViewById(R.id.filmTypeText);
+            filmRating = itemView.findViewById(R.id.ratingText);
         }
 
         //On item click
