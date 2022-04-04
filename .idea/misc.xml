@@ -24,7 +24,7 @@
         <entry key="app/src/main/res/layout/fragment_game_card.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_general_feed.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_get_film.xml" value="0.16" />
-        <entry key="app/src/main/res/layout/fragment_get_game.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/fragment_get_game.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_get_music.xml" value="0.13385416666666666" />
         <entry key="app/src/main/res/layout/fragment_movie.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_movie_card.xml" value="0.2" />

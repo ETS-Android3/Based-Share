@@ -15,4 +15,7 @@ public class Constants {
     public static final String POST_TOKEN_PATH = "https://accounts.spotify.com/api/token/";
     public static final String CONTENT_TYPE = "application/x-www-form-urlencoded";
     public static final String GRANT_TYPE = "client_credentials";
+
+    public static final String RAWG_KEY = "94b30e61ab464d5391dad2327cbde848";
+    public static final String MOVIE_DB_KEY = "80c2c0f8c85114414c562a7c20f011c6";
 }

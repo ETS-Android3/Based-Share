@@ -1,6 +1,7 @@
 package com.nyanjuimarvin.basedshare.retrofit;
 
 import static com.nyanjuimarvin.basedshare.constants.Constants.MOVIE_DB_BASE_URL;
+import static com.nyanjuimarvin.basedshare.constants.Constants.MOVIE_DB_KEY;
 
 import com.nyanjuimarvin.basedshare.endpoints.FilmEndpoint;
 
@@ -24,7 +25,7 @@ public class FilmClient {
                     .addInterceptor(new Interceptor() {
                         @Override//Interceptor
                         public Response intercept(Chain chain) throws IOException {
-                            Request request = chain.request().newBuilder().build();
+                            Request request = chain.request().newBuilder().addHeader("Authorization",MOVIE_DB_KEY).build();
                             return chain.proceed(request);
                         }
                     })

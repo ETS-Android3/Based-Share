@@ -1,5 +1,6 @@
 package com.nyanjuimarvin.basedshare.retrofit;
 
+import static com.nyanjuimarvin.basedshare.constants.Constants.RAWG_KEY;
 import static com.nyanjuimarvin.basedshare.constants.Constants.SPOTIFY_BASE_URL;
 
 import com.nyanjuimarvin.basedshare.endpoints.MusicEndpoint;
@@ -26,6 +27,7 @@ public class MusicClient {
                         @Override
                         public Response intercept(Chain chain) throws IOException {
                             Request myRequest = chain.request().newBuilder()
+                                    .addHeader("Authorization",RAWG_KEY)
                                     .build();
                             return chain.proceed(myRequest);
                         }
