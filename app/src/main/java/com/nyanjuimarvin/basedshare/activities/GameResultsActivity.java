@@ -10,7 +10,12 @@ import android.view.View;
 import com.nyanjuimarvin.basedshare.R;
 import com.nyanjuimarvin.basedshare.databinding.ActivityGameResultsBinding;
 import com.nyanjuimarvin.basedshare.endpoints.GameEndpoint;
+import com.nyanjuimarvin.basedshare.models.game.GamesResponse;
 import com.nyanjuimarvin.basedshare.retrofit.GameClient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class GameResultsActivity extends AppCompatActivity {
 
@@ -26,5 +31,21 @@ public class GameResultsActivity extends AppCompatActivity {
 
         //Retrofit Api call
         GameEndpoint gameEndpoint = GameClient.getGameClient();
+        Intent intent = getIntent();
+        String search = intent.getStringExtra("term");
+        Call<GamesResponse> call = gameEndpoint.getGames(search);
+
+        call.enqueue(new Callback<GamesResponse>(){
+
+            @Override
+            public void onResponse(Call<GamesResponse> call, Response<GamesResponse> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<GamesResponse> call, Throwable t) {
+
+            }
+        });
     }
 }
