@@ -1,6 +1,9 @@
 package com.nyanjuimarvin.basedshare.retrofit;
 
 import static com.nyanjuimarvin.basedshare.constants.Constants.RAWG_BASE_URL;
+import static com.nyanjuimarvin.basedshare.constants.Constants.RAWG_KEY;
+
+import androidx.annotation.NonNull;
 
 import com.nyanjuimarvin.basedshare.endpoints.GameEndpoint;
 

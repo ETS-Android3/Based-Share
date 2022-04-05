@@ -27,7 +27,6 @@ public class MusicClient {
                         @Override
                         public Response intercept(Chain chain) throws IOException {
                             Request myRequest = chain.request().newBuilder()
-                                    .addHeader("Authorization",RAWG_KEY)
                                     .build();
                             return chain.proceed(myRequest);
                         }

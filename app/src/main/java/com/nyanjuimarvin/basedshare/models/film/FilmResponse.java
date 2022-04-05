@@ -12,7 +12,7 @@ public class FilmResponse {
     private Integer page;
     @SerializedName("results")
     @Expose
-    private List<Result> results = null;
+    private List<Result> results;
     @SerializedName("total_pages")
     @Expose
     private Integer totalPages;

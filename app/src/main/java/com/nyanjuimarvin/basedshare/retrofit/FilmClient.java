@@ -21,18 +21,19 @@ public class FilmClient {
 
     public static FilmEndpoint getFilmClient(){
         if(retrofit == null){
+            //Interceptor
             OkHttpClient client = new OkHttpClient.Builder()
-                    .addInterceptor(new Interceptor() {
-                        @Override//Interceptor
-                        public Response intercept(Chain chain) throws IOException {
-                            Request request = chain.request().newBuilder().addHeader("Authorization",MOVIE_DB_KEY).build();
-                            return chain.proceed(request);
-                        }
+                    .addInterceptor(chain -> {
+                        Request request = chain.request()
+                                .newBuilder()
+                                .build();
+                        return chain.proceed(request);
                     })
                     .build();
 
             retrofit = new Retrofit.Builder()
                     .baseUrl(MOVIE_DB_BASE_URL)
+                    .client(client)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 

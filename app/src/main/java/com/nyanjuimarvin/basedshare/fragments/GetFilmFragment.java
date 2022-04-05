@@ -83,8 +83,7 @@ public class GetFilmFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), FilmResultsActivity.class);
-                intent.putExtra("term",getFilmBinding.filmSearch.getText().toString().trim());
-                Toast.makeText(getContext(),getFilmBinding.filmSearch.getText().toString().trim(),Toast.LENGTH_LONG).show();
+                intent.putExtra("query",getFilmBinding.filmSearch.getText().toString().trim());
                 startActivity(intent);
             }
         });

@@ -1,6 +1,7 @@
 package com.nyanjuimarvin.basedshare.adapters;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,13 +43,14 @@ public class GameRecyclerAdapter extends RecyclerView.Adapter<GameRecyclerAdapte
         return new GameViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull GameRecyclerAdapter.GameViewHolder holder, int position) {
+        String placeholder = "Custom";
         Result result = gameResults.get(position);
         Picasso.get().load(result.getBackgroundImage()).into(holder.gameImage);
         holder.gameName.setText(result.getName());
         holder.gameRelease.setText(result.getReleased());
-        holder.gameRating.setText(result.getEsrbRating().getName());
         holder.metacritic.setText(String.format("%s",result.getMetacritic()));
 //        holder.gameRating.setText(String.format("%s / %s",Double.toString(result.getRating()),Double.toString(result.getRatingTop())));
         holder.bindView(result,listener);
