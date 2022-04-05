@@ -10,6 +10,6 @@ public interface FilmEndpoint {
 
     @GET("search/multi")
     Call<FilmResponse> getFilms(
-            @Query("api_key") String Apikey,
-            @Query("query") String query);
+            @Query("query") String query,
+            @Query("api_key")String key);
 }

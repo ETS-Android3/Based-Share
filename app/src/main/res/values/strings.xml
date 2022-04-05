@@ -23,7 +23,8 @@
     <string name="musicMenu">Music</string>
     <string name="accountMenu">Account</string>
     <string name="search">search</string>
-    <string name="movie_or_tv_show_name">movie or tv show name</string>
+    <string name="movie_or_tv_show_name">movie or tv show</string>
     <string name="search_movies_shows">Search Movies/Shows</string>
     <string name="search_game">search game</string>
+    <string name="searchg">Search</string>
 </resources>

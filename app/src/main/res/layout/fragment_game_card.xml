@@ -15,7 +15,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/Oil">
 
         <ImageView
             android:id="@+id/gameImage"
@@ -34,14 +35,15 @@
             android:id="@+id/gameNameText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="150dp"
+            android:layout_marginStart="170dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="10dp"
             android:fontFamily="@font/poppins_bold"
             android:text="Doom Eternal"
+            android:textColor="@color/Platinum"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.196"
+            app:layout_constraintHorizontal_bias="0.66"
             app:layout_constraintStart_toEndOf="@+id/gameImage"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,9 +51,10 @@
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/amaranth_bold"
-            android:text="Released"
+            android:text="Released:"
+            android:textColor="@color/Platinum"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/firstReleaseDateText"
             app:layout_constraintHorizontal_bias="0.214"
@@ -62,22 +65,24 @@
             android:id="@+id/firstReleaseDateText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="84dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/amaranth"
             android:text="TextView"
+            android:textColor="@color/Platinum"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView12"
             app:layout_constraintTop_toBottomOf="@+id/gameNameText" />
 
         <TextView
             android:id="@+id/gameRatingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="36dp"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="30dp"
             android:fontFamily="@font/amaranth_bold"
             android:text="Metacritic:"
+            android:textColor="@color/Platinum"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/gameImage"
@@ -88,16 +93,18 @@
             android:id="@+id/metacriticText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="30dp"
             android:fontFamily="@font/amaranth"
             android:text="Metacritic"
+            android:textColor="@color/Platinum"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.242"
+            app:layout_constraintHorizontal_bias="0.372"
             app:layout_constraintStart_toEndOf="@+id/gameRatingText"
             app:layout_constraintTop_toBottomOf="@+id/firstReleaseDateText"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.625" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

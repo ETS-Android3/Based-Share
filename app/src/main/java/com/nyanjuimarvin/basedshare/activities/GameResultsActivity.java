@@ -1,7 +1,5 @@
 package com.nyanjuimarvin.basedshare.activities;
 
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
 import static com.nyanjuimarvin.basedshare.constants.Constants.RAWG_KEY;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -72,7 +70,6 @@ public class GameResultsActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<GamesResponse> call, Throwable t) {
-                gameResultsBinding.errorText.setText(t.getMessage());
             }
 
             private void hideProgressBar(){

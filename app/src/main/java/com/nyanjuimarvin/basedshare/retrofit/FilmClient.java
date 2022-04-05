@@ -26,6 +26,7 @@ public class FilmClient {
                     .addInterceptor(chain -> {
                         Request request = chain.request()
                                 .newBuilder()
+                                .addHeader("api_key",MOVIE_DB_KEY)
                                 .build();
                         return chain.proceed(request);
                     })

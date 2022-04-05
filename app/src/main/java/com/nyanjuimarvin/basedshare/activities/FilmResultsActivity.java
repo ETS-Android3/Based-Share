@@ -49,15 +49,19 @@ public class FilmResultsActivity extends AppCompatActivity {
         FilmEndpoint filmEndpoint = FilmClient.getFilmClient();
         Intent intent = getIntent();
         String query = intent.getStringExtra("query");
-        Call<FilmResponse> call = filmEndpoint.getFilms(MOVIE_DB_KEY,query);
+        Call<FilmResponse> call = filmEndpoint.getFilms(query,MOVIE_DB_KEY);
 
         call.enqueue(new Callback<FilmResponse>(){
 
             @Override
             public void onResponse(@NonNull Call<FilmResponse> call, @NonNull Response<FilmResponse> response) {
 
-                Log.i("response",response.raw().toString());
+                if(!response.isSuccessful()) {
+                    Log.i("response", response.raw().toString());
+                    Toast.makeText(getApplicationContext(), response.raw().toString(), Toast.LENGTH_LONG).show();
+                }
 
+                Log.e("error","request not successful");
 //                List<Result> films = response.body().getResults();
 //                Log.d(this.getClass().getSimpleName(), String.valueOf(response.body().getResults().size()));
 //                FilmRecyclerAdapter filmRecyclerAdapter = new FilmRecyclerAdapter(getApplicationContext(), films, new FilmRecyclerAdapter.FilmOnClickListener() {
