@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.nyanjuimarvin.basedshare.R;
 import com.nyanjuimarvin.basedshare.adapters.FilmRecyclerAdapter;
+import com.nyanjuimarvin.basedshare.constants.Constants;
 import com.nyanjuimarvin.basedshare.databinding.ActivityFilmResultsBinding;
 import com.nyanjuimarvin.basedshare.databinding.FragmentMovieCardBinding;
 import com.nyanjuimarvin.basedshare.endpoints.FilmEndpoint;
@@ -41,6 +42,9 @@ public class FilmResultsActivity extends AppCompatActivity {
         View view = filmResultsBinding.getRoot();
         setContentView(view);
 
+        View decorView = getWindow().getDecorView();
+        int options = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(options);
 
         FilmEndpoint filmEndpoint = FilmClient.getFilmClient();
         Intent intent = getIntent();
@@ -52,7 +56,7 @@ public class FilmResultsActivity extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call<FilmResponse> call, @NonNull Response<FilmResponse> response) {
 
-                Log.i("respoonse",response.raw().toString());
+                Log.i("response",response.raw().toString());
 
 //                List<Result> films = response.body().getResults();
 //                Log.d(this.getClass().getSimpleName(), String.valueOf(response.body().getResults().size()));

@@ -9,5 +9,7 @@ import retrofit2.http.Query;
 public interface FilmEndpoint {
 
     @GET("search/multi")
-    Call<FilmResponse> getFilms(@Query("api_key") String apiKey, @Query("query") String query);
+    Call<FilmResponse> getFilms(
+            @Query("api_key") String Apikey,
+            @Query("query") String query);
 }

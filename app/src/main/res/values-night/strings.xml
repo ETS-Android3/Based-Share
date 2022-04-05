@@ -7,4 +7,5 @@
     <string name="search">search</string>
     <string name="movie_or_tv_show_name">movie or tv show name</string>
     <string name="search_movies_shows">Search Movies/Shows</string>
+    <string name="search_game">search game</string>
 </resources>

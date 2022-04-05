@@ -1,5 +1,7 @@
 package com.nyanjuimarvin.basedshare.activities;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 import static com.nyanjuimarvin.basedshare.constants.Constants.RAWG_KEY;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,25 +51,41 @@ public class GameResultsActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<GamesResponse> call, Response<GamesResponse> response) {
 
-                Log.i("response", String.valueOf(response.body().getResults().size()));
+                if(!response.isSuccessful()) {
+                    gameResultsBinding.errorText.setText(response.message());
+                }
+
+                hideProgressBar();
                 List<Result> gamesList = response.body().getResults();
                 GameRecyclerAdapter gameRecyclerAdapter = new GameRecyclerAdapter(getApplicationContext(), gamesList, new GameRecyclerAdapter.GameClickListener() {
                     @Override
                     public void onItemClick(Result result) {
-                        Toast.makeText(getApplicationContext(), "Clicked",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Clicked", Toast.LENGTH_LONG).show();
                     }
                 });
 
                 recyclerView = gameResultsBinding.gamesRecycler;
-                LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
+                LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setAdapter(gameRecyclerAdapter);
             }
 
             @Override
             public void onFailure(Call<GamesResponse> call, Throwable t) {
-
+                gameResultsBinding.errorText.setText(t.getMessage());
             }
+
+            private void hideProgressBar(){
+                gameResultsBinding.gamesProgressBar.setVisibility(View.GONE);
+                gameResultsBinding.gamesRecycler.setVisibility(View.VISIBLE);
+            }
+
+            private void showError(){
+                gameResultsBinding.errorText.setVisibility(View.VISIBLE);
+            }
+
         });
+
+
     }
 }
