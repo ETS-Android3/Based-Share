@@ -48,10 +48,10 @@ public class Result {
     private String posterPath;
     @SerializedName("vote_average")
     @Expose
-    private Integer voteAverage;
+    private Float voteAverage;
     @SerializedName("vote_count")
     @Expose
-    private Integer voteCount;
+    private int voteCount;
     @SerializedName("adult")
     @Expose
     private Boolean adult;
@@ -97,10 +97,10 @@ public class Result {
      * @param adult
      * @param posterPath
      */
-    public Result(String backdropPath, String firstAirDate, List<Integer> genreIds, Integer id, String mediaType, String name, List<String> originCountry, String originalLanguage, String originalName, String overview, Double popularity, String posterPath, Integer voteAverage, Integer voteCount, Boolean adult, String originalTitle, String releaseDate, String title, Boolean video) {
+    public Result(String backdropPath, String firstAirDate, List<Integer> genreIds, Integer id, String mediaType, String name, List<String> originCountry, String originalLanguage, String originalName, String overview, Double popularity, String posterPath, Float voteAverage, int voteCount, Boolean adult, String originalTitle, String releaseDate, String title, Boolean video) {
         super();
         //Add original specifier in image path
-        this.backdropPath = IMAGE_BASE_URL + backdropPath;
+        this.backdropPath = backdropPath;
         this.firstAirDate = firstAirDate;
         this.genreIds = genreIds;
         this.id = id;
@@ -217,19 +217,19 @@ public class Result {
         this.posterPath = posterPath;
     }
 
-    public Integer getVoteAverage() {
+    public Float getVoteAverage() {
         return voteAverage;
     }
 
-    public void setVoteAverage(Integer voteAverage) {
+    public void setVoteAverage(Float voteAverage) {
         this.voteAverage = voteAverage;
     }
 
-    public Integer getVoteCount() {
+    public int getVoteCount() {
         return voteCount;
     }
 
-    public void setVoteCount(Integer voteCount) {
+    public void setVoteCount(int voteCount) {
         this.voteCount = voteCount;
     }
 

@@ -49,37 +49,33 @@ public class FilmResultsActivity extends AppCompatActivity {
         FilmEndpoint filmEndpoint = FilmClient.getFilmClient();
         Intent intent = getIntent();
         String query = intent.getStringExtra("query");
-        Call<FilmResponse> call = filmEndpoint.getFilms(query,MOVIE_DB_KEY);
+        Call<FilmResponse> call = filmEndpoint.getFilms(MOVIE_DB_KEY,query);
 
         call.enqueue(new Callback<FilmResponse>(){
 
             @Override
             public void onResponse(@NonNull Call<FilmResponse> call, @NonNull Response<FilmResponse> response) {
 
-                if(!response.isSuccessful()) {
-                    Log.i("response", response.raw().toString());
-                    Toast.makeText(getApplicationContext(), response.raw().toString(), Toast.LENGTH_LONG).show();
-                }
+                Log.i("response", response.raw().toString());
+                List<Result> films = response.body().getResults();
+                Log.d(this.getClass().getSimpleName(), String.valueOf(response.body().getResults().size()));
+                FilmRecyclerAdapter filmRecyclerAdapter = new FilmRecyclerAdapter(getApplicationContext(), films, new FilmRecyclerAdapter.FilmOnClickListener() {
+                    @Override
+                    public void onItemClick(Result result) {
+                        Toast.makeText(getApplicationContext(),"CLicked", Toast.LENGTH_LONG).show();
+                    }
+                });
+                recyclerView = filmResultsBinding.filmsRecycler;
+                LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.setAdapter(filmRecyclerAdapter);
 
-                Log.e("error","request not successful");
-//                List<Result> films = response.body().getResults();
-//                Log.d(this.getClass().getSimpleName(), String.valueOf(response.body().getResults().size()));
-//                FilmRecyclerAdapter filmRecyclerAdapter = new FilmRecyclerAdapter(getApplicationContext(), films, new FilmRecyclerAdapter.FilmOnClickListener() {
-//                    @Override
-//                    public void onItemClick(Result result) {
-//                        Toast.makeText(getApplicationContext(),"CLicked", Toast.LENGTH_LONG).show();
-//                    }
-//                });
-//                recyclerView = filmResultsBinding.filmsRecycler;
-//                LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
-//                recyclerView.setLayoutManager(layoutManager);
-//                recyclerView.setAdapter(filmRecyclerAdapter);
-//
-//                System.out.println(response.code());
+                System.out.println(response.code());
             }
 
             @Override
             public void onFailure(Call<FilmResponse> call, Throwable t) {
+                Log.e("error",t.toString());
             }
         });
     }

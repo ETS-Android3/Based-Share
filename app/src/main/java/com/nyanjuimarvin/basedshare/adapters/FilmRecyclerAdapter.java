@@ -1,5 +1,7 @@
 package com.nyanjuimarvin.basedshare.adapters;
 
+import static com.nyanjuimarvin.basedshare.constants.Constants.IMAGE_BASE_URL;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,12 +47,18 @@ public class FilmRecyclerAdapter extends RecyclerView.Adapter<FilmRecyclerAdapte
     @Override
     public void onBindViewHolder(@NonNull FilmRecyclerAdapter.FilmViewHolder holder, int position) {
         Result result = filmResults.get(position);
-        Picasso.get().load(result.getBackdropPath()).into(holder.filmImage);
-        holder.filmTitle.setText(result.getName());
-        holder.filmRelease.setText(result.getFirstAirDate());
-        holder.filmType.setText(result.getMediaType());
-        holder.filmRating.setText(result.getVoteAverage());
-        holder.bindView(result,listener);
+        if(result.getMediaType().equals("movie") || result.getMediaType().equals("tv") ) {
+            Picasso.get().load(IMAGE_BASE_URL + result.getPosterPath()).into(holder.filmImage);
+            if(result.getOriginalTitle() != null ) {
+                holder.filmTitle.setText(result.getOriginalTitle());
+            }else{
+                holder.filmTitle.setText(result.getName());
+            }
+            holder.filmRelease.setText(result.getFirstAirDate());
+            holder.filmType.setText(result.getMediaType());
+            holder.filmRating.setText(String.valueOf(result.getVoteAverage()));
+            holder.bindView(result, listener);
+        }
     }
 
     @Override
