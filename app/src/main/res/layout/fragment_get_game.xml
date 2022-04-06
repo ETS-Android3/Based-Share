@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.GetGameFragment"
-    tools:viewBindingIgnore="false"
     android:background="@color/Ivory">
 
     <TextView
@@ -13,28 +12,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/amaranth_bold"
-        android:text="Search Games"
+        android:text="@string/search_games"
         android:textColor="#43A047"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/searchGame"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.463" />
 
     <EditText
         android:id="@+id/searchGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:fontFamily="@font/autour_one"
+        android:hint="@string/search_game"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:hint="@string/search_game"
-        android:fontFamily="@font/autour_one"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.522"
+        android:autofillHints="" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/gamesButton"

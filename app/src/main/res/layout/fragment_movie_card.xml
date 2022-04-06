@@ -21,7 +21,7 @@
 
         <ImageView
             android:id="@+id/filmImage"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
             android:src="@drawable/cassette"
@@ -34,9 +34,11 @@
 
         <TextView
             android:id="@+id/filmNameText"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="50dp"
             android:fontFamily="@font/poppins_bold"
             android:text="Blade Runner 2049"
             android:textColor="@color/Beetle_Green"
@@ -47,47 +49,35 @@
             app:layout_constraintTop_toBottomOf="@+id/filmImage" />
 
         <TextView
-            android:id="@+id/releaseDateText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:fontFamily="@font/amaranth_bold"
-            android:text="2017"
-            android:textSize="17sp"
-            app:layout_constraintBottom_toTopOf="@+id/ratingText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.887"
-            app:layout_constraintStart_toEndOf="@+id/filmNameText"
-            app:layout_constraintTop_toBottomOf="@+id/filmImage"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <TextView
             android:id="@+id/ratingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/belgrano"
             android:text="78%"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.956"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/filmTypeText"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintHorizontal_bias="0.65"
+            app:layout_constraintStart_toEndOf="@+id/filmNameText"
+            app:layout_constraintTop_toBottomOf="@+id/filmImage"
+            app:layout_constraintVertical_bias="0.043" />
 
         <TextView
             android:id="@+id/filmTypeText"
-            android:layout_width="118dp"
-            android:layout_height="17dp"
-            android:fontFamily="@font/athiti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/poppins_bold"
             android:text="movie"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ratingText"
-            app:layout_constraintHorizontal_bias="0.102"
+            app:layout_constraintHorizontal_bias="0.083"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/filmNameText"
-            app:layout_constraintVertical_bias="0.179" />
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

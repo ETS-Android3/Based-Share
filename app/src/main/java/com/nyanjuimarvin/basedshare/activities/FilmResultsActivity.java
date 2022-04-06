@@ -56,27 +56,34 @@ public class FilmResultsActivity extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call<FilmResponse> call, @NonNull Response<FilmResponse> response) {
 
-                Log.i("response", response.raw().toString());
-                List<Result> films = response.body().getResults();
-                Log.d(this.getClass().getSimpleName(), String.valueOf(response.body().getResults().size()));
-                FilmRecyclerAdapter filmRecyclerAdapter = new FilmRecyclerAdapter(getApplicationContext(), films, new FilmRecyclerAdapter.FilmOnClickListener() {
-                    @Override
-                    public void onItemClick(Result result) {
-                        Toast.makeText(getApplicationContext(),"CLicked", Toast.LENGTH_LONG).show();
-                    }
-                });
-                recyclerView = filmResultsBinding.filmsRecycler;
-                LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
-                recyclerView.setLayoutManager(layoutManager);
-                recyclerView.setAdapter(filmRecyclerAdapter);
-
-                System.out.println(response.code());
+                if(response.isSuccessful()) {
+                    hideProgressBar();
+                    Log.i("response", response.raw().toString());
+                    List<Result> films = response.body().getResults();
+                    Log.d(this.getClass().getSimpleName(), String.valueOf(response.body().getResults().size()));
+                    FilmRecyclerAdapter filmRecyclerAdapter = new FilmRecyclerAdapter(getApplicationContext(), films, new FilmRecyclerAdapter.FilmOnClickListener() {
+                        @Override
+                        public void onItemClick(Result result) {
+                            Toast.makeText(getApplicationContext(), "CLicked", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                    recyclerView = filmResultsBinding.filmsRecycler;
+                    LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+                    recyclerView.setLayoutManager(layoutManager);
+                    recyclerView.setAdapter(filmRecyclerAdapter);
+                }
             }
 
             @Override
             public void onFailure(Call<FilmResponse> call, Throwable t) {
                 Log.e("error",t.toString());
             }
+
+            private void hideProgressBar(){
+                filmResultsBinding.filmProgressBar.setVisibility(View.GONE);
+                filmResultsBinding.filmsRecycler.setVisibility(View.VISIBLE);
+            }
+
         });
     }
 }
