@@ -5,7 +5,6 @@
     <translate
         android:fromXDelta="0%"
         android:fromYDelta="-100%"
-        android:toXDelta="30%"
         android:duration="3000"/>
     <!--Fade Effect-->
     <alpha

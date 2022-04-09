@@ -9,6 +9,8 @@
         <entry key="app/src/main/res/drawable/login_top.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/recyclerviewbackground.xml" value="0.136" />
         <entry key="app/src/main/res/drawable/shape.xml" value="0.1" />
+        <entry key="app/src/main/res/font/.xml" value="0.17239583333333333" />
+        <entry key="app/src/main/res/font/amaranth.xml" value="0.17239583333333333" />
         <entry key="app/src/main/res/layout/activity_account.xml" value="0.13385416666666666" />
         <entry key="app/src/main/res/layout/activity_detail.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_feed.xml" value="0.25" />
