@@ -21,7 +21,7 @@
         <entry key="app/src/main/res/layout/activity_music.xml" value="0.13385416666666666" />
         <entry key="app/src/main/res/layout/activity_music_results.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.13385416666666666" />
-        <entry key="app/src/main/res/layout/activity_start.xml" value="0.13385416666666666" />
+        <entry key="app/src/main/res/layout/activity_start.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_game.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_game_card.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_general_feed.xml" value="0.33" />
