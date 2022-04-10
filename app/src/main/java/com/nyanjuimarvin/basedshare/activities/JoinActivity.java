@@ -37,7 +37,7 @@ public class JoinActivity extends AppCompatActivity {
         View view = joinBinding.getRoot();
         setContentView(view);
 
-        joinBinding.registerButton.setOnClickListener(new View.OnClickListener(){
+        joinBinding.registerButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -46,10 +46,10 @@ public class JoinActivity extends AppCompatActivity {
         });
     }
 
-    private boolean isValidEmail(String Email){
+    private boolean isValidEmail(String Email) {
 
         boolean validEmail = (Email != null && Email.matches("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$"));
-        if(!validEmail){
+        if (!validEmail) {
             joinBinding.userEmail.getText().clear();
             joinBinding.userEmail.setError("Please enter a valid Email");
             return false;
@@ -57,8 +57,8 @@ public class JoinActivity extends AppCompatActivity {
         return true;
     }
 
-    private boolean isValidName(String name){
-        if(name.equals("")){
+    private boolean isValidName(String name) {
+        if (name.equals("")) {
             joinBinding.userName.getText().clear();
             joinBinding.userName.setError("Kindly enter your name ");
             return false;
@@ -66,28 +66,28 @@ public class JoinActivity extends AppCompatActivity {
         return true;
     }
 
-    private boolean isPasswordValid(String password,String confirmPassword ){
-        if(password.length() < 6){
+    private boolean isPasswordValid(String password, String confirmPassword) {
+        if (password.length() < 6) {
             joinBinding.userPassword.getText().clear();
-            Toast.makeText(getApplicationContext(),"Password too short",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Password too short", Toast.LENGTH_LONG).show();
             joinBinding.userPassword.setError("Passwords must have 6 characters or more");
             return false;
-        }else if(!password.equals(confirmPassword)){
+        } else if (!password.equals(confirmPassword)) {
             joinBinding.confirmPassword.getText().clear();
-            Toast.makeText(getApplicationContext(),"Passwords do not match",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Passwords do not match", Toast.LENGTH_LONG).show();
             joinBinding.confirmPassword.setError("Passwords do not match");
             return false;
         }
         return true;
     }
 
-    private boolean validInput(String name, String email,String password,String confirmPassword){
+    private boolean validInput(String name, String email, String password, String confirmPassword) {
         return name.matches("([a-zA-z]+|[a-zA-Z]+\\s[a-zA-Z]+)*")
                 && email.matches("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
                 && password.equals(confirmPassword);
     }
 
-    private void createUser(){
+    private void createUser() {
         String userName = joinBinding.userName.getText().toString().trim();
         String userEmail = joinBinding.userEmail.getText().toString().trim();
         String userPassword = joinBinding.userPassword.getText().toString().trim();
@@ -95,28 +95,29 @@ public class JoinActivity extends AppCompatActivity {
 
         boolean validEmail = isValidEmail(userEmail);
         boolean validName = isValidName(userName);
-        boolean validPassword = isPasswordValid(userPassword,confirmPassword);
+        boolean validPassword = isPasswordValid(userPassword, confirmPassword);
 
         newUserAuth = Authentication.getAuth();
 
-        if(!validEmail || !validName || !validPassword){
-            Toast.makeText(getApplicationContext(),"Invalid Credentials",Toast.LENGTH_LONG).show();
+        if (!validEmail || !validName || !validPassword) {
+            Toast.makeText(getApplicationContext(), "Invalid Credentials", Toast.LENGTH_LONG).show();
             return;
         }
 
         newUserAuth.createUserWithEmailAndPassword(userEmail, userPassword)
                 .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         createFirebaseUser(Objects.requireNonNull(task.getResult().getUser()));
-                        Log.d("Message","Account creation Successful");
-                    }else{
-                        Log.w("Warning","Account Creation Failed", task.getException());
-                        Toast.makeText(getApplicationContext(),"Account Creation Failed",Toast.LENGTH_LONG).show();
+                        sendVerificationEmail();
+                        Log.d("Message", "Account creation Successful");
+                    } else {
+                        Log.w("Warning", "Account Creation Failed", task.getException());
+                        Toast.makeText(getApplicationContext(), "Account Creation Failed", Toast.LENGTH_LONG).show();
                     }
                 });
     }
 
-    private void createFirebaseUser(FirebaseUser user){
+    private void createFirebaseUser(FirebaseUser user) {
 
         String userName = joinBinding.userName.getText().toString().trim();
         newUser = newUserAuth.getCurrentUser();
@@ -126,10 +127,23 @@ public class JoinActivity extends AppCompatActivity {
                 .build();
 
         user.updateProfile(addName).addOnCompleteListener(task -> {
-            if(task.isSuccessful()) {
+            if (task.isSuccessful()) {
                 Log.d(TAG, Objects.requireNonNull(user.getDisplayName()));
-                Toast.makeText(getApplicationContext(),"Name set in firebase",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Name set in firebase", Toast.LENGTH_SHORT).show();
             }
         });
-        }
+    }
+
+    private void sendVerificationEmail() {
+        newUserAuth = Authentication.getAuth();
+        FirebaseUser user = newUserAuth.getCurrentUser();
+
+        assert user != null;
+        user.sendEmailVerification().addOnCompleteListener(task -> {
+            if (task.isSuccessful()){
+                Log.i("Email","Email Sent");
+            }
+        });
+
+    }
 }
