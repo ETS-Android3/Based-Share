@@ -28,4 +28,5 @@
     <string name="search_game">search game</string>
     <string name="searchg">Search</string>
     <string name="search_games">Search Games</string>
+    <string name="logout">Logout</string>
 </resources>

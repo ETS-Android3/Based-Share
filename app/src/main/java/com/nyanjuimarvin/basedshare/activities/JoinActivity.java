@@ -1,24 +1,18 @@
 package com.nyanjuimarvin.basedshare.activities;
 
-import static android.content.ContentValues.TAG;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
-import com.nyanjuimarvin.basedshare.R;
 import com.nyanjuimarvin.basedshare.databinding.ActivityJoinBinding;
 import com.nyanjuimarvin.basedshare.firebase.authentication.Authentication;
 
@@ -27,6 +21,7 @@ import java.util.Objects;
 public class JoinActivity extends AppCompatActivity {
 
     private ActivityJoinBinding joinBinding;
+    private FirebaseAuth.AuthStateListener listener;
     private FirebaseAuth newUserAuth;
     private FirebaseUser newUser;
 
@@ -36,9 +31,8 @@ public class JoinActivity extends AppCompatActivity {
         joinBinding = ActivityJoinBinding.inflate(getLayoutInflater());
         View view = joinBinding.getRoot();
         setContentView(view);
-
+//        createAuthStateListener();
         joinBinding.registerButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 createUser();
@@ -128,7 +122,7 @@ public class JoinActivity extends AppCompatActivity {
 
         user.updateProfile(addName).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                Log.d(TAG, Objects.requireNonNull(user.getDisplayName()));
+                Log.d("user", Objects.requireNonNull(user.getDisplayName()));
                 Toast.makeText(getApplicationContext(), "Name set in firebase", Toast.LENGTH_SHORT).show();
             }
         });
@@ -144,6 +138,33 @@ public class JoinActivity extends AppCompatActivity {
                 Log.i("Email","Email Sent");
             }
         });
+    }
 
+    private void createAuthStateListener() {
+        listener = firebaseAuth -> {
+            final FirebaseUser user = firebaseAuth.getCurrentUser();
+            if (user != null) {
+                Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
+        };
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+//        newUserAuth = Authentication.getAuth();
+        newUserAuth.addAuthStateListener(listener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (listener != null) {
+//            newUserAuth = Authentication.getAuth();
+            newUserAuth.removeAuthStateListener(listener);
+        }
     }
 }

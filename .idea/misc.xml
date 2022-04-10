@@ -19,6 +19,7 @@
         <entry key="app/src/main/res/layout/activity_game.xml" value="0.13385416666666666" />
         <entry key="app/src/main/res/layout/activity_game_results.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_join.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.13385416666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_music.xml" value="0.13385416666666666" />
         <entry key="app/src/main/res/layout/activity_music_results.xml" value="0.1" />
@@ -36,6 +37,7 @@
         <entry key="app/src/main/res/layout/fragment_post_film.xml" value="0.13385416666666666" />
         <entry key="app/src/main/res/layout/fragment_post_music.xml" value="0.13385416666666666" />
         <entry key="app/src/main/res/menu/bottom_navigation_1.xml" value="0.15789473684210525" />
+        <entry key="app/src/main/res/menu/logout_menu.xml" value="0.25" />
       </map>
     </option>
   </component>

@@ -7,6 +7,8 @@ import androidx.fragment.app.FragmentManager;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -60,5 +62,13 @@ public class GameActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    //Options menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.logout_menu,menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }
