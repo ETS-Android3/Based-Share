@@ -31,7 +31,7 @@ public class JoinActivity extends AppCompatActivity {
         joinBinding = ActivityJoinBinding.inflate(getLayoutInflater());
         View view = joinBinding.getRoot();
         setContentView(view);
-//        createAuthStateListener();
+        createAuthStateListener();
         joinBinding.registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -155,7 +155,7 @@ public class JoinActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-//        newUserAuth = Authentication.getAuth();
+        newUserAuth = Authentication.getAuth();
         newUserAuth.addAuthStateListener(listener);
     }
 
@@ -163,7 +163,7 @@ public class JoinActivity extends AppCompatActivity {
     public void onStop() {
         super.onStop();
         if (listener != null) {
-//            newUserAuth = Authentication.getAuth();
+            newUserAuth = Authentication.getAuth();
             newUserAuth.removeAuthStateListener(listener);
         }
     }

@@ -13,9 +13,11 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.nyanjuimarvin.basedshare.R;
 import com.nyanjuimarvin.basedshare.adapters.GameActivityAdapter;
 import com.nyanjuimarvin.basedshare.databinding.ActivityGameBinding;
+import com.nyanjuimarvin.basedshare.firebase.authentication.Authentication;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -70,5 +72,23 @@ public class GameActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.logout_menu,menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.logoutOption){
+            logOut();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void logOut(){
+        Authentication.getAuth().signOut();
+        Intent intent = new Intent(getApplicationContext(), JoinActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 }
