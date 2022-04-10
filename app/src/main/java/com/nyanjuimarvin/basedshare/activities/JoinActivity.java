@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.nyanjuimarvin.basedshare.databinding.ActivityJoinBinding;
+import com.nyanjuimarvin.basedshare.databinding.ActivityLoginBinding;
 import com.nyanjuimarvin.basedshare.firebase.authentication.Authentication;
 
 import java.util.Objects;
@@ -21,6 +22,7 @@ import java.util.Objects;
 public class JoinActivity extends AppCompatActivity {
 
     private ActivityJoinBinding joinBinding;
+    private ActivityLoginBinding loginBinding;
     private FirebaseAuth.AuthStateListener listener;
     private FirebaseAuth newUserAuth;
     private FirebaseUser newUser;
@@ -29,6 +31,7 @@ public class JoinActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         joinBinding = ActivityJoinBinding.inflate(getLayoutInflater());
+        loginBinding = ActivityLoginBinding.inflate(getLayoutInflater());
         View view = joinBinding.getRoot();
         setContentView(view);
         createAuthStateListener();
@@ -37,6 +40,11 @@ public class JoinActivity extends AppCompatActivity {
             public void onClick(View view) {
                 createUser();
             }
+        });
+
+        loginBinding.signInText.setOnClickListener(view1 -> {
+            Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+            startActivity(intent);
         });
     }
 
