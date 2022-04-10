@@ -1,19 +1,34 @@
 package com.nyanjuimarvin.basedshare.activities;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.nyanjuimarvin.basedshare.R;
 import com.nyanjuimarvin.basedshare.databinding.ActivityJoinBinding;
+import com.nyanjuimarvin.basedshare.firebase.authentication.Authentication;
+
+import java.util.Objects;
 
 public class JoinActivity extends AppCompatActivity {
 
     private ActivityJoinBinding joinBinding;
+    private FirebaseAuth newUserAuth;
+    private FirebaseUser newUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,45 +41,44 @@ public class JoinActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                String userName = joinBinding.userName.getText().toString().trim();
-                String userEmail = joinBinding.userEmail.getText().toString().trim();
-                String userPassword = joinBinding.userPassword.getText().toString().trim();
-                String confirmPassword = joinBinding.confirmPassword.getText().toString().trim();
-
-                if (userName.isEmpty()) {
-                    System.out.println(userName);
-                    joinBinding.userName.setError("Name is Required");
-                    Toast.makeText(getApplicationContext(),"Name required",Toast.LENGTH_LONG).show();
-                } else if (userEmail.isEmpty()) {
-                    joinBinding.userEmail.setError("E-mail is required");
-                    Toast.makeText(getApplicationContext(),"Email Required",Toast.LENGTH_LONG).show();
-                } else if (userPassword.isEmpty()) {
-                    joinBinding.userPassword.setError("Password Required");
-                    Toast.makeText(getApplicationContext(),"Password Required",Toast.LENGTH_LONG).show();
-                } else if (confirmPassword.isEmpty()) {
-                    joinBinding.confirmPassword.setError("Confirm Password required");
-                    Toast.makeText(getApplicationContext(),"Confirm Password",Toast.LENGTH_LONG).show();
-                } else if(!(userName.matches("([a-zA-z]+|[a-zA-Z]+\\s[a-zA-Z]+)*"))){
-                    joinBinding.userName.getText().clear();
-                    joinBinding.userName.setError("Enter a logical Name");
-                    Toast.makeText(getApplicationContext(),"Invalid Name Format",Toast.LENGTH_LONG).show();
-                }else if(!(userEmail.matches("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$"))){
-                    joinBinding.userEmail.getText().clear();
-                    joinBinding.userEmail.setError("Enter a valid Email Format");
-                    Toast.makeText(getApplicationContext(),"Invalid Email Format",Toast.LENGTH_LONG).show();
-                }else if(!(userPassword.equals(confirmPassword))){
-                    joinBinding.confirmPassword.getText().clear();
-                    joinBinding.confirmPassword.setError("Password does not match");
-                    Toast.makeText(getApplicationContext(),"Passwords do not match",Toast.LENGTH_LONG).show();
-                } else {
-                    Intent intent = new Intent(getApplicationContext(),GameActivity.class);
-                    startActivity(intent);
-                    intent.putExtra("userName", userName);
-
-                    Toast.makeText(getApplicationContext(), String.format("Registered as %s", userName), Toast.LENGTH_LONG).show();
-                }
+                createUser();
             }
         });
+    }
+
+    private boolean isValidEmail(String Email){
+
+        boolean validEmail = (Email != null && Email.matches("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$"));
+        if(!validEmail){
+            joinBinding.userEmail.getText().clear();
+            joinBinding.userEmail.setError("Please enter a valid Email");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isValidName(String name){
+        if(name.equals("")){
+            joinBinding.userName.getText().clear();
+            joinBinding.userName.setError("Kindly enter your name ");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isPasswordValid(String password,String confirmPassword ){
+        if(password.length() < 6){
+            joinBinding.userPassword.getText().clear();
+            Toast.makeText(getApplicationContext(),"Password too short",Toast.LENGTH_LONG).show();
+            joinBinding.userPassword.setError("Passwords must have 6 characters or more");
+            return false;
+        }else if(!password.equals(confirmPassword)){
+            joinBinding.confirmPassword.getText().clear();
+            Toast.makeText(getApplicationContext(),"Passwords do not match",Toast.LENGTH_LONG).show();
+            joinBinding.confirmPassword.setError("Passwords do not match");
+            return false;
+        }
+        return true;
     }
 
     private boolean validInput(String name, String email,String password,String confirmPassword){
@@ -73,4 +87,49 @@ public class JoinActivity extends AppCompatActivity {
                 && password.equals(confirmPassword);
     }
 
+    private void createUser(){
+        String userName = joinBinding.userName.getText().toString().trim();
+        String userEmail = joinBinding.userEmail.getText().toString().trim();
+        String userPassword = joinBinding.userPassword.getText().toString().trim();
+        String confirmPassword = joinBinding.confirmPassword.getText().toString().trim();
+
+        boolean validEmail = isValidEmail(userEmail);
+        boolean validName = isValidName(userName);
+        boolean validPassword = isPasswordValid(userPassword,confirmPassword);
+
+        newUserAuth = Authentication.getAuth();
+
+        if(!validEmail || !validName || !validPassword){
+            Toast.makeText(getApplicationContext(),"Invalid Credentials",Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        newUserAuth.createUserWithEmailAndPassword(userEmail, userPassword)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()){
+                        createFirebaseUser(Objects.requireNonNull(task.getResult().getUser()));
+                        Log.d("Message","Account creation Successful");
+                    }else{
+                        Log.w("Warning","Account Creation Failed", task.getException());
+                        Toast.makeText(getApplicationContext(),"Account Creation Failed",Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
+
+    private void createFirebaseUser(FirebaseUser user){
+
+        String userName = joinBinding.userName.getText().toString().trim();
+        newUser = newUserAuth.getCurrentUser();
+
+        UserProfileChangeRequest addName = new UserProfileChangeRequest.Builder()
+                .setDisplayName(userName)
+                .build();
+
+        user.updateProfile(addName).addOnCompleteListener(task -> {
+            if(task.isSuccessful()) {
+                Log.d(TAG, Objects.requireNonNull(user.getDisplayName()));
+                Toast.makeText(getApplicationContext(),"Name set in firebase",Toast.LENGTH_SHORT).show();
+            }
+        });
+        }
 }

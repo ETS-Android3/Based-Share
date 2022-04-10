@@ -19,5 +19,6 @@ public class Constants {
     public static final String RAWG_KEY = "94b30e61ab464d5391dad2327cbde848";
     public static final String MOVIE_DB_KEY = "80c2c0f8c85114414c562a7c20f011c6";
 
-    /* Firebase Keys */
+    /* Firebase */
+    public static final int REQUEST_CODE = 101;
 }
