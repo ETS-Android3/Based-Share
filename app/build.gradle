@@ -83,7 +83,7 @@ dependencies {
     //Database
     implementation 'com.google.firebase:firebase-database'
 
-    //Auth
+    //Authentication
     implementation 'com.google.firebase:firebase-auth:21.0.3'
 }
 apply plugin: 'com.google.gms.google-services'
