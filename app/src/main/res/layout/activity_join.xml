@@ -22,10 +22,10 @@
 
 
     <TextView
-        android:id="@+id/signInWelcomeText"
+        android:id="@+id/joinText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="104dp"
         android:fontFamily="@font/poppins_bold"
         android:text="@string/join"
         android:textColor="@color/YellowGreen"
@@ -36,10 +36,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/signInName"
+        android:id="@+id/userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/input_field"
         android:ems="10"
         android:hint="@string/name"
@@ -49,29 +49,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInWelcomeText" />
+        app:layout_constraintTop_toBottomOf="@+id/joinText" />
 
     <EditText
-        android:id="@+id/signInEmail"
+        android:id="@+id/userEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/input_field"
         android:ems="10"
         android:hint="@string/Email"
         android:inputType="textEmailAddress"
-        android:textColorHint="@color/Gray_Goose"
         android:textColor="@color/Azure"
+        android:textColorHint="@color/Gray_Goose"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInName" />
+        app:layout_constraintTop_toBottomOf="@+id/userName" />
 
     <EditText
         android:id="@+id/userPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/input_field"
         android:ems="10"
         android:hint="password"
@@ -81,13 +81,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/userEmail" />
 
     <EditText
         android:id="@+id/confirmPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/input_field"
         android:ems="10"
         android:hint="@string/confirm"
@@ -100,7 +100,7 @@
         app:layout_constraintTop_toBottomOf="@+id/userPassword" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/signInButton"
+        android:id="@+id/registerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button1"
@@ -111,13 +111,13 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/confirmPassword"
-        app:layout_constraintVertical_bias="0.437" />
+        app:layout_constraintVertical_bias="0.555" />
 
     <TextView
         android:id="@+id/signInText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="88dp"
+        android:layout_marginBottom="80dp"
         android:text="Already have an account? Sign in"
         android:textColor="@color/Azure"
         android:textSize="18sp"

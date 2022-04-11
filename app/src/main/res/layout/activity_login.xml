@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
 xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -21,7 +22,7 @@ tools:context=".activities.LoginActivity">
 
 
     <TextView
-        android:id="@+id/signInWelcomeText"
+        android:id="@+id/signText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="112dp"
@@ -35,39 +36,41 @@ tools:context=".activities.LoginActivity">
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/signInName"
+        android:id="@+id/signEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="124dp"
         android:background="@drawable/input_field"
         android:ems="10"
-        android:hint="@string/name"
+        android:hint="@string/Email"
         android:inputType="textPersonName"
         android:textColor="@color/Azure"
         android:textColorHint="@color/Gray_Goose"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInWelcomeText" />
+        app:layout_constraintTop_toBottomOf="@+id/signText" />
 
     <EditText
-        android:id="@+id/signInEmail"
+        android:id="@+id/signPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/input_field"
         android:ems="10"
-        android:hint="@string/Email"
+        android:hint="@string/pass"
         android:inputType="textEmailAddress"
         android:textColor="@color/Azure"
         android:textColorHint="@color/Gray_Goose"
+        app:layout_constraintBottom_toTopOf="@+id/signButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInName" />
+        app:layout_constraintTop_toBottomOf="@+id/signEmail"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/signInButton"
+        android:id="@+id/signButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
@@ -83,12 +86,14 @@ tools:context=".activities.LoginActivity">
         android:id="@+id/forgotPasswordText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="132dp"
+        android:layout_marginBottom="160dp"
+        android:clickable="true"
         android:text="Forgot Password?"
         android:textColor="@color/Azure"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
 
