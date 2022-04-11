@@ -51,9 +51,22 @@ public class LoginActivity extends AppCompatActivity {
         auth = Authentication.getAuth();
         String emailAddress = loginBinding.signEmail.getText().toString().trim();
 
+        if(emailAddress.equals("")){
+            loginBinding.signEmail.setError("Enter email before clicking forgot password");
+            Toast.makeText(getApplicationContext(),"Provide a registered email",Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if(!emailAddress.matches("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")){
+            loginBinding.signEmail.setError("Please use a valid email format");
+            Toast.makeText(getApplicationContext(),"Invalid Email Format", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         auth.sendPasswordResetEmail(emailAddress).addOnCompleteListener(task -> {
             if (task.isSuccessful()){
                 Log.i("success","Email Sent");
+                Toast.makeText(getApplicationContext(),"Email was sent.Check your inbox",Toast.LENGTH_LONG).show();
             }else{
                 Toast.makeText(getApplicationContext(),String.format("Sorry, no account with %s was found",emailAddress),Toast.LENGTH_LONG).show();
             }

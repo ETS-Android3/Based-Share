@@ -6,12 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.nyanjuimarvin.basedshare.R;
 import com.nyanjuimarvin.basedshare.databinding.ActivityMainBinding;
 import com.nyanjuimarvin.basedshare.databinding.ActivityMusicBinding;
@@ -74,11 +77,32 @@ public class MusicActivity extends AppCompatActivity {
             logOut();
             return true;
         }
+
+        if(id == R.id.deleteOption){
+            deleteAccount();
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
     private void logOut(){
         Authentication.getAuth().signOut();
+        Intent intent = new Intent(getApplicationContext(), JoinActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    private void deleteAccount(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        assert user != null;
+        user.delete();
+        user.delete().addOnCompleteListener( task -> {
+            if(task.isSuccessful()){
+                Log.d("deleted","Account deleted successfully");
+            }
+        });
         Intent intent = new Intent(getApplicationContext(), JoinActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
