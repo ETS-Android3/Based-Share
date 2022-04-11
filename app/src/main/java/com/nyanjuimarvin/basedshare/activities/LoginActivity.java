@@ -3,6 +3,7 @@ package com.nyanjuimarvin.basedshare.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.nyanjuimarvin.basedshare.firebase.authentication.Authentication;
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding loginBinding;
+    private FirebaseAuth.AuthStateListener listener;
     private FirebaseAuth auth;
     private FirebaseUser user;
 
@@ -33,6 +35,16 @@ public class LoginActivity extends AppCompatActivity {
         loginBinding.forgotPasswordText.setOnClickListener(view1 -> {
             forgotPassword();
         });
+
+        listener = firebaseAuth -> {
+            user = Authentication.getAuth().getCurrentUser();
+            if (user != null){
+                Intent intent = new Intent(LoginActivity.this, GameActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
+        };
     }
 
     private void forgotPassword(){
@@ -75,5 +87,19 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Authentication Failed",Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        auth.addAuthStateListener(listener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (listener != null) {
+            auth.removeAuthStateListener(listener);
+        }
     }
 }
