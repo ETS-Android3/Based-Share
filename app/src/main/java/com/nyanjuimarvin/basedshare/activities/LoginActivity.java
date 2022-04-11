@@ -36,6 +36,10 @@ public class LoginActivity extends AppCompatActivity {
             forgotPassword();
         });
 
+        loginBinding.signButton.setOnClickListener(view1 -> {
+            signIn();
+        });
+
         listener = firebaseAuth -> {
             user = Authentication.getAuth().getCurrentUser();
             if (user != null){
@@ -92,12 +96,14 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+        auth = Authentication.getAuth();
         auth.addAuthStateListener(listener);
     }
 
     @Override
     public void onStop() {
         super.onStop();
+        auth = Authentication.getAuth();
         if (listener != null) {
             auth.removeAuthStateListener(listener);
         }
