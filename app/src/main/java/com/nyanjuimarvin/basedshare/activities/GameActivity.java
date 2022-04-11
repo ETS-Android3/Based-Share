@@ -7,13 +7,17 @@ import androidx.fragment.app.FragmentManager;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.nyanjuimarvin.basedshare.R;
 import com.nyanjuimarvin.basedshare.adapters.GameActivityAdapter;
 import com.nyanjuimarvin.basedshare.databinding.ActivityGameBinding;
@@ -81,6 +85,11 @@ public class GameActivity extends AppCompatActivity {
             logOut();
             return true;
         }
+
+        if(id == R.id.deleteOption){
+            deleteAccount();
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -91,4 +100,16 @@ public class GameActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    private void deleteAccount(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        assert user != null;
+        user.delete().addOnCompleteListener( task -> {
+            if(task.isSuccessful()){
+                Log.d("deleted","Account deleted successfully");
+            }
+        });
+    }
+
 }
