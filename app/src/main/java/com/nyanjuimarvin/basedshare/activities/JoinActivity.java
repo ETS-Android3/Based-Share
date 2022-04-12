@@ -1,8 +1,16 @@
 package com.nyanjuimarvin.basedshare.activities;
 
+import static com.nyanjuimarvin.basedshare.constants.Constants.REQUEST_CODE;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,12 +18,18 @@ import android.view.View;
 import android.widget.Toast;
 
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.nyanjuimarvin.basedshare.databinding.ActivityJoinBinding;
 import com.nyanjuimarvin.basedshare.databinding.ActivityLoginBinding;
 import com.nyanjuimarvin.basedshare.firebase.authentication.Authentication;
+import com.nyanjuimarvin.basedshare.firebase.google.SignIn;
 
 import java.util.Objects;
 
@@ -43,6 +57,13 @@ public class JoinActivity extends AppCompatActivity {
         joinBinding.signInText.setOnClickListener(view1 -> {
             Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
             startActivity(intent);
+        });
+
+        joinBinding.signInButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                signInWithGoogle();
+            }
         });
     }
 
@@ -156,6 +177,40 @@ public class JoinActivity extends AppCompatActivity {
                 finish();
             }
         };
+    }
+
+    private void signInWithGoogle(){
+        GoogleSignInOptions signInOptions = SignIn.getSignInOptions();
+        GoogleSignInClient signInClient = GoogleSignIn.getClient(this,signInOptions);
+        Intent signIntent = signInClient.getSignInIntent();
+        signInResultLauncher.launch(signIntent);
+    }
+
+    private final ActivityResultLauncher<Intent> signInResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+        @Override
+        public void onActivityResult(ActivityResult result) {
+            if(result.getResultCode() == Activity.RESULT_OK){
+                Log.d("result",String.valueOf(result.getData()));
+            }
+        }
+    });
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == Activity.RESULT_OK ){
+            assert data != null;
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+
+            assert result != null;
+            if (result.isSuccess()){
+                Intent intent = new Intent(getApplicationContext(),GameActivity.class);
+            }else{
+                Toast.makeText(getApplicationContext(), "Sign in failed",Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     @Override
