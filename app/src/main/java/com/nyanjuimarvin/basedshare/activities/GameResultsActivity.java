@@ -58,7 +58,7 @@ public class GameResultsActivity extends AppCompatActivity {
                 GameRecyclerAdapter gameRecyclerAdapter = new GameRecyclerAdapter(getApplicationContext(), gamesList, new GameRecyclerAdapter.GameClickListener() {
                     @Override
                     public void onItemClick(Result result) {
-                        Toast.makeText(getApplicationContext(), "Clicked", Toast.LENGTH_LONG).show();
+//                        Intent intent = new Intent(getApplicationContext(),Game);
                     }
                 });
 

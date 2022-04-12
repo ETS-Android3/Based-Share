@@ -12,9 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BasedShare">
         <activity
+            android:name=".activities.FilmDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.GameDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.LoginActivity"
             android:exported="false"
-            android:theme="@style/NoActionBarTheme"/>
+            android:theme="@style/NoActionBarTheme" />
         <activity
             android:name=".activities.MusicResultsActivity"
             android:exported="false" />
