@@ -16,9 +16,12 @@ import com.nyanjuimarvin.basedshare.R;
 import com.nyanjuimarvin.basedshare.adapters.GameRecyclerAdapter;
 import com.nyanjuimarvin.basedshare.databinding.ActivityGameResultsBinding;
 import com.nyanjuimarvin.basedshare.endpoints.GameEndpoint;
+import com.nyanjuimarvin.basedshare.models.game.Game;
 import com.nyanjuimarvin.basedshare.models.game.GamesResponse;
 import com.nyanjuimarvin.basedshare.models.game.Result;
 import com.nyanjuimarvin.basedshare.retrofit.GameClient;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -58,7 +61,11 @@ public class GameResultsActivity extends AppCompatActivity {
                 GameRecyclerAdapter gameRecyclerAdapter = new GameRecyclerAdapter(getApplicationContext(), gamesList, new GameRecyclerAdapter.GameClickListener() {
                     @Override
                     public void onItemClick(Result result) {
-//                        Intent intent = new Intent(getApplicationContext(),Game);
+
+                        Game game = new Game(result.getName(),result.getParentPlatforms(),result.getStores(),result.getBackgroundImage(),result.getGenres(),result.getReleased(),result.getMetacritic());
+                        Intent intent = new Intent(getApplicationContext(),GameDetailActivity.class);
+                        intent.putExtra("game", Parcels.wrap(game));
+                        startActivity(intent);
                     }
                 });
 

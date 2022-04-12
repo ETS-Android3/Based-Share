@@ -14,7 +14,7 @@ public class Game{
 
     public String name;
     public List<ParentPlatform> platforms;
-    public List<Store__1> stores;
+    public List<Store> stores;
     public String imageUrl;
     public List<Genre> genres;
     public String releaseDate;
@@ -24,7 +24,7 @@ public class Game{
 
     }
 
-    public Game(String name, List<ParentPlatform> platforms, List<Store__1> stores, String imageUrl, List<Genre> genres, String releaseDate, int metacritic) {
+    public Game(String name, List<ParentPlatform> platforms, List<Store> stores, String imageUrl, List<Genre> genres, String releaseDate, int metacritic) {
         this.name = name;
         this.platforms = platforms;
         this.stores = stores;
@@ -67,11 +67,11 @@ public class Game{
         this.platforms = platforms;
     }
 
-    public List<Store__1> getStores() {
+    public List<Store> getStores() {
         return stores;
     }
 
-    public void setStores(List<Store__1> stores) {
+    public void setStores(List<Store> stores) {
         this.stores = stores;
     }
 
