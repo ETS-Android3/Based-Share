@@ -7,66 +7,68 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
 
+@Parcel
 public class Result {
 
     @SerializedName("backdrop_path")
     @Expose
-    private String backdropPath;
+    public String backdropPath;
     @SerializedName("first_air_date")
     @Expose
-    private String firstAirDate;
+    public String firstAirDate;
     @SerializedName("genre_ids")
     @Expose
-    private List<Integer> genreIds = null;
+    public List<Integer> genreIds = null;
     @SerializedName("id")
     @Expose
-    private Integer id;
+    public Integer id;
     @SerializedName("media_type")
     @Expose
-    private String mediaType;
+    public String mediaType;
     @SerializedName("name")
     @Expose
-    private String name;
+    public String name;
     @SerializedName("origin_country")
     @Expose
-    private List<String> originCountry = null;
+    public List<String> originCountry = null;
     @SerializedName("original_language")
     @Expose
-    private String originalLanguage;
+    public String originalLanguage;
     @SerializedName("original_name")
     @Expose
-    private String originalName;
+    public String originalName;
     @SerializedName("overview")
     @Expose
-    private String overview;
+    public String overview;
     @SerializedName("popularity")
     @Expose
-    private Double popularity;
+    public Double popularity;
     @SerializedName("poster_path")
     @Expose
-    private String posterPath;
+    public String posterPath;
     @SerializedName("vote_average")
     @Expose
-    private Float voteAverage;
+    public Float voteAverage;
     @SerializedName("vote_count")
     @Expose
-    private int voteCount;
+    public int voteCount;
     @SerializedName("adult")
     @Expose
-    private Boolean adult;
+    public Boolean adult;
     @SerializedName("original_title")
     @Expose
-    private String originalTitle;
+    public String originalTitle;
     @SerializedName("release_date")
     @Expose
-    private String releaseDate;
+    public String releaseDate;
     @SerializedName("title")
     @Expose
-    private String title;
+    public String title;
     @SerializedName("video")
     @Expose
-    private Boolean video;
+    public Boolean video;
 
     /**
      * No args constructor for use in serialization

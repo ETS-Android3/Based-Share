@@ -179,6 +179,7 @@ public class JoinActivity extends AppCompatActivity {
         };
     }
 
+    //Launch sign in intent
     private void signInWithGoogle(){
         GoogleSignInOptions signInOptions = SignIn.getSignInOptions();
         GoogleSignInClient signInClient = GoogleSignIn.getClient(this,signInOptions);
@@ -186,6 +187,7 @@ public class JoinActivity extends AppCompatActivity {
         signInResultLauncher.launch(signIntent);
     }
 
+    //Start activity for the result
     private final ActivityResultLauncher<Intent> signInResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
@@ -197,6 +199,7 @@ public class JoinActivity extends AppCompatActivity {
         }
     });
 
+    //Launch the next Activity
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -207,6 +210,7 @@ public class JoinActivity extends AppCompatActivity {
             assert result != null;
             if (result.isSuccess()){
                 Intent intent = new Intent(getApplicationContext(),GameActivity.class);
+                finish();
             }else{
                 Toast.makeText(getApplicationContext(), "Sign in failed",Toast.LENGTH_LONG).show();
             }
