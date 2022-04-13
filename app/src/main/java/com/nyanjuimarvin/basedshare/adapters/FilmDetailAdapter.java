@@ -6,21 +6,28 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.nyanjuimarvin.basedshare.fragments.FilmDetailFragment;
 import com.nyanjuimarvin.basedshare.fragments.GameDetailFragment;
+import com.nyanjuimarvin.basedshare.models.film.Result;
+
+import java.util.List;
 
 public class FilmDetailAdapter extends FragmentStateAdapter {
-    public FilmDetailAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
+
+    private List<Result> results;
+    public FilmDetailAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle,List<Result> results) {
         super(fragmentManager, lifecycle);
+        this.results = results;
     }
 
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        return new GameDetailFragment();
+        return FilmDetailFragment.newInstance(results.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return 1;
+        return results.size();
     }
 }

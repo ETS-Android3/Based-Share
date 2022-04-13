@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,6 +33,8 @@ import com.nyanjuimarvin.basedshare.firebase.authentication.Authentication;
 import com.nyanjuimarvin.basedshare.firebase.google.SignIn;
 
 import java.util.Objects;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class JoinActivity extends AppCompatActivity {
 
@@ -125,6 +128,8 @@ public class JoinActivity extends AppCompatActivity {
             return;
         }
 
+
+
         newUserAuth.createUserWithEmailAndPassword(userEmail, userPassword)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
@@ -171,7 +176,7 @@ public class JoinActivity extends AppCompatActivity {
         listener = firebaseAuth -> {
             final FirebaseUser user = firebaseAuth.getCurrentUser();
             if (user != null) {
-                Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
@@ -216,6 +221,15 @@ public class JoinActivity extends AppCompatActivity {
             }
         }
     }
+
+    private void showSignUpDialog(){
+        SweetAlertDialog dialog = new SweetAlertDialog(this,SweetAlertDialog.PROGRESS_TYPE);
+        dialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+        dialog.setTitleText("Creating Account...");
+        dialog.setCancelable(false);
+        dialog.show();
+    }
+
 
     @Override
     public void onStart() {

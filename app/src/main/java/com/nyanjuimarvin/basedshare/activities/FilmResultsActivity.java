@@ -23,6 +23,8 @@ import com.nyanjuimarvin.basedshare.models.film.FilmResponse;
 import com.nyanjuimarvin.basedshare.models.film.Result;
 import com.nyanjuimarvin.basedshare.retrofit.FilmClient;
 
+import org.parceler.Parcels;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -64,7 +66,9 @@ public class FilmResultsActivity extends AppCompatActivity {
                     FilmRecyclerAdapter filmRecyclerAdapter = new FilmRecyclerAdapter(getApplicationContext(), films, new FilmRecyclerAdapter.FilmOnClickListener() {
                         @Override
                         public void onItemClick(Result result) {
-                            Toast.makeText(getApplicationContext(), "CLicked", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(getApplicationContext(),FilmDetailActivity.class);
+                            intent.putExtra("films", Parcels.wrap(films));
+                            startActivity(intent);
                         }
                     });
                     recyclerView = filmResultsBinding.filmsRecycler;

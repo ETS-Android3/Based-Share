@@ -95,7 +95,7 @@ public class GameActivity extends AppCompatActivity {
 
     private void logOut(){
         Authentication.getAuth().signOut();
-        Intent intent = new Intent(getApplicationContext(), JoinActivity.class);
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
@@ -105,16 +105,16 @@ public class GameActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         assert user != null;
-        user.delete();
         user.delete().addOnCompleteListener( task -> {
             if(task.isSuccessful()){
                 Log.d("deleted","Account deleted successfully");
+                Intent intent = new Intent(getApplicationContext(), JoinActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
             }
         });
-        Intent intent = new Intent(getApplicationContext(), JoinActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
+
     }
 
 }

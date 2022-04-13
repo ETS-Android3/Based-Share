@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 import org.parceler.Parcel;
 
+@Parcel
 public class Result {
 
     @SerializedName("slug")
@@ -69,18 +70,13 @@ public class Result {
     @SerializedName("score")
     @Expose
     private String score;
-    @SerializedName("clip")
-    @Expose
-    private Object clip;
     @SerializedName("tags")
     @Expose
     private List<Tag> tags = null;
     @SerializedName("esrb_rating")
     @Expose
     private EsrbRating esrbRating;
-    @SerializedName("user_game")
-    @Expose
-    private Object userGame;
+
     @SerializedName("reviews_count")
     @Expose
     private Integer reviewsCount;
@@ -138,9 +134,8 @@ public class Result {
      * @param name
      * @param updated
      * @param suggestionsCount
-     * @param clip
      */
-    public Result(String slug, String name, Integer playtime, List<Platform> platforms, List<Store> stores, String released, Boolean tba, String backgroundImage, Double rating, Integer ratingTop, List<Rating> ratings, Integer ratingsCount, Integer reviewsTextCount, Integer added, AddedByStatus addedByStatus, Integer metacritic, Integer suggestionsCount, String updated, Integer id, String score, Object clip, List<Tag> tags, EsrbRating esrbRating, Object userGame, Integer reviewsCount, String saturatedColor, String dominantColor, List<ShortScreenshot> shortScreenshots, List<ParentPlatform> parentPlatforms, List<Genre> genres) {
+    public Result(String slug, String name, Integer playtime, List<Platform> platforms, List<Store> stores, String released, Boolean tba, String backgroundImage, Double rating, Integer ratingTop, List<Rating> ratings, Integer ratingsCount, Integer reviewsTextCount, Integer added, AddedByStatus addedByStatus, Integer metacritic, Integer suggestionsCount, String updated, Integer id, String score, List<Tag> tags, EsrbRating esrbRating, Integer reviewsCount, String saturatedColor, String dominantColor, List<ShortScreenshot> shortScreenshots, List<ParentPlatform> parentPlatforms, List<Genre> genres) {
         super();
         this.slug = slug;
         this.name = name;
@@ -162,10 +157,8 @@ public class Result {
         this.updated = updated;
         this.id = id;
         this.score = score;
-        this.clip = clip;
         this.tags = tags;
         this.esrbRating = esrbRating;
-        this.userGame = userGame;
         this.reviewsCount = reviewsCount;
         this.saturatedColor = saturatedColor;
         this.dominantColor = dominantColor;
@@ -334,14 +327,6 @@ public class Result {
         this.score = score;
     }
 
-    public Object getClip() {
-        return clip;
-    }
-
-    public void setClip(Object clip) {
-        this.clip = clip;
-    }
-
     public List<Tag> getTags() {
         return tags;
     }
@@ -358,13 +343,6 @@ public class Result {
         this.esrbRating = esrbRating;
     }
 
-    public Object getUserGame() {
-        return userGame;
-    }
-
-    public void setUserGame(Object userGame) {
-        this.userGame = userGame;
-    }
 
     public Integer getReviewsCount() {
         return reviewsCount;

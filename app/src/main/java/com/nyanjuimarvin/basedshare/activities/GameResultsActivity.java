@@ -61,10 +61,8 @@ public class GameResultsActivity extends AppCompatActivity {
                 GameRecyclerAdapter gameRecyclerAdapter = new GameRecyclerAdapter(getApplicationContext(), gamesList, new GameRecyclerAdapter.GameClickListener() {
                     @Override
                     public void onItemClick(Result result) {
-
-                        Game game = new Game(result.getName(),result.getParentPlatforms(),result.getStores(),result.getBackgroundImage(),result.getGenres(),result.getReleased(),result.getMetacritic());
                         Intent intent = new Intent(getApplicationContext(),GameDetailActivity.class);
-                        intent.putExtra("game", Parcels.wrap(game));
+                        intent.putExtra("results", Parcels.wrap(gamesList));
                         startActivity(intent);
                     }
                 });
