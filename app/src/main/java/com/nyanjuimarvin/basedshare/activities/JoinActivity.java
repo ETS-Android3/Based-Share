@@ -177,7 +177,7 @@ public class JoinActivity extends AppCompatActivity {
             final FirebaseUser user = firebaseAuth.getCurrentUser();
             if (user != null) {
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
             }
@@ -214,7 +214,8 @@ public class JoinActivity extends AppCompatActivity {
 
             assert result != null;
             if (result.isSuccess()){
-                Intent intent = new Intent(getApplicationContext(),GameActivity.class);
+                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent);
                 finish();
             }else{
                 Toast.makeText(getApplicationContext(), "Sign in failed",Toast.LENGTH_LONG).show();
