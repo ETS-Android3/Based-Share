@@ -10,7 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.nyanjuimarvin.basedshare.R;
@@ -48,10 +52,39 @@ public class FilmResultsActivity extends AppCompatActivity {
         int options = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(options);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.movie_menu,menu);
+        MenuItem menuItem = menu.findItem(R.id.searchFilm);
+        SearchView searchview = (SearchView) menuItem.getActionView();
+
+        searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                fetchFilms(s);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                fetchFilms(s);
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void fetchFilms(String term){
         FilmEndpoint filmEndpoint = FilmClient.getFilmClient();
-        Intent intent = getIntent();
-        String query = intent.getStringExtra("query");
-        Call<FilmResponse> call = filmEndpoint.getFilms(MOVIE_DB_KEY,query);
+        Call<FilmResponse> call = filmEndpoint.getFilms(MOVIE_DB_KEY,term);
 
         call.enqueue(new Callback<FilmResponse>(){
 

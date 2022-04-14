@@ -103,8 +103,6 @@ public class GameActivity extends AppCompatActivity {
 
     private void deleteAccount(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        assert user != null;
         user.delete().addOnCompleteListener( task -> {
             if(task.isSuccessful()){
                 Log.d("deleted","Account deleted successfully");
@@ -112,6 +110,8 @@ public class GameActivity extends AppCompatActivity {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
+            }else{
+                Log.d("deleted", task.getException().getLocalizedMessage());
             }
         });
 

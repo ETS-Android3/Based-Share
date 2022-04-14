@@ -35,16 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         loginBinding.signButton.setOnClickListener(view1 -> {
             signIn();
         });
-
-        listener = firebaseAuth -> {
-            user = Authentication.getAuth().getCurrentUser();
-            if (user != null){
-                Intent intent = new Intent(LoginActivity.this, GameActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                finish();
-            }
-        };
+        createAuthStateListener();
     }
 
     private void forgotPassword(){
@@ -102,6 +93,18 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    private void createAuthStateListener(){
+        listener = firebaseAuth -> {
+            user = Authentication.getAuth().getCurrentUser();
+            if (user != null){
+                Intent intent = new Intent(LoginActivity.this, GameActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        };
+    }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -113,8 +116,6 @@ public class LoginActivity extends AppCompatActivity {
     public void onStop() {
         super.onStop();
         auth = Authentication.getAuth();
-        if (listener != null) {
-            auth.removeAuthStateListener(listener);
-        }
+        auth.removeAuthStateListener(listener);
     }
 }

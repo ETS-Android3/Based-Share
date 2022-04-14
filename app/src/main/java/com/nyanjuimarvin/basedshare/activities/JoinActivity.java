@@ -50,7 +50,7 @@ public class JoinActivity extends AppCompatActivity {
         joinBinding = ActivityJoinBinding.inflate(getLayoutInflater());
         View view = joinBinding.getRoot();
         setContentView(view);
-        createAuthStateListener();
+//        createAuthStateListener();
         joinBinding.registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,6 +58,7 @@ public class JoinActivity extends AppCompatActivity {
             }
         });
 
+        createAuthStateListener();
         joinBinding.signInText.setOnClickListener(view1 -> {
             Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
             startActivity(intent);

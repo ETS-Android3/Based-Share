@@ -83,7 +83,6 @@ public class GetFilmFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), FilmResultsActivity.class);
-                intent.putExtra("query",getFilmBinding.filmSearch.getText().toString().trim());
                 startActivity(intent);
             }
         });
