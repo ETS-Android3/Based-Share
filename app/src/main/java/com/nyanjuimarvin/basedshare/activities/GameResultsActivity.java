@@ -2,6 +2,7 @@ package com.nyanjuimarvin.basedshare.activities;
 
 import static com.nyanjuimarvin.basedshare.constants.Constants.RAWG_KEY;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,7 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.nyanjuimarvin.basedshare.R;
@@ -40,13 +45,39 @@ public class GameResultsActivity extends AppCompatActivity {
         gameResultsBinding = ActivityGameResultsBinding.inflate(getLayoutInflater());
         View view = gameResultsBinding.getRoot();
         setContentView(view);
+        fetchGames("");
+    }
 
-        //Retrofit Api call
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu,menu);
+        MenuItem menuItem = menu.findItem(R.id.searchWidget);
+        SearchView searchview = (SearchView) menuItem.getActionView();
+        searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String games) {
+                fetchGames(games);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                fetchGames(s);
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void fetchGames(String term){
         GameEndpoint gameEndpoint = GameClient.getGameClient();
-        Intent intent = getIntent();
-        String search = intent.getStringExtra("term");
-        Call<GamesResponse> call = gameEndpoint.getGames(RAWG_KEY,search);
-
+        Call<GamesResponse> call = gameEndpoint.getGames(RAWG_KEY,term);
         call.enqueue(new Callback<GamesResponse>(){
 
             @Override
@@ -87,7 +118,5 @@ public class GameResultsActivity extends AppCompatActivity {
             }
 
         });
-
-
     }
 }

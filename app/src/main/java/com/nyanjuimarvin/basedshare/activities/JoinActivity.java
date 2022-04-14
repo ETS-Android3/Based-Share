@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -112,6 +113,7 @@ public class JoinActivity extends AppCompatActivity {
     }
 
     private void createUser() {
+
         String userName = joinBinding.userName.getText().toString().trim();
         String userEmail = joinBinding.userEmail.getText().toString().trim();
         String userPassword = joinBinding.userPassword.getText().toString().trim();
@@ -132,6 +134,7 @@ public class JoinActivity extends AppCompatActivity {
 
         newUserAuth.createUserWithEmailAndPassword(userEmail, userPassword)
                 .addOnCompleteListener(this, task -> {
+
                     if (task.isSuccessful()) {
                         createFirebaseUser(Objects.requireNonNull(task.getResult().getUser()));
                         sendVerificationEmail();

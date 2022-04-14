@@ -42,6 +42,7 @@
         <entry key="app/src/main/res/layout/fragment_post_music.xml" value="0.13385416666666666" />
         <entry key="app/src/main/res/menu/bottom_navigation_1.xml" value="0.15789473684210525" />
         <entry key="app/src/main/res/menu/logout_menu.xml" value="0.25" />
+        <entry key="app/src/main/res/menu/search_menu.xml" value="0.13385416666666666" />
       </map>
     </option>
   </component>

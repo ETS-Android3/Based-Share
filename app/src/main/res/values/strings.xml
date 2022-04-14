@@ -30,4 +30,6 @@
     <string name="search_games">Search Games</string>
     <string name="logout">Logout</string>
     <string name="delete_account">Delete Account</string>
+    <string name="search1">Search</string>
+    <string name="view_saved">view Saved</string>
 </resources>

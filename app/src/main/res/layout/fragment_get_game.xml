@@ -12,44 +12,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/amaranth_bold"
-        android:text="@string/search_games"
+        android:text="Games"
         android:textColor="#43A047"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/searchGame"
+        app:layout_constraintBottom_toTopOf="@+id/gamesButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.463" />
-
-    <EditText
-        android:id="@+id/searchGame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:fontFamily="@font/autour_one"
-        android:hint="@string/search_game"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.522"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.212" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/gamesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
         android:background="@drawable/button1"
+        android:fontFamily="@font/autour_one"
         android:text="@string/searchg"
         android:textColor="@color/Platinum"
-        android:fontFamily="@font/autour_one"
+        app:layout_constraintBottom_toTopOf="@+id/appCompatButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/appCompatButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="72dp"
+        android:background="@drawable/button1"
+        android:text="@string/view_saved"
+        android:textColor="@color/Platinum"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchGame"
-        app:layout_constraintVertical_bias="0.576" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

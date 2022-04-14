@@ -82,7 +82,6 @@ public class GetGameFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), GameResultsActivity.class);
-                intent.putExtra("term",getGameBinding.searchGame.getText().toString().trim());
                 startActivity(intent);
             }
         });
