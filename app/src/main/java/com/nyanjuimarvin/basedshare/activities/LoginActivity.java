@@ -1,5 +1,6 @@
 package com.nyanjuimarvin.basedshare.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -35,8 +36,22 @@ public class LoginActivity extends AppCompatActivity {
         loginBinding.signButton.setOnClickListener(view1 -> {
             signIn();
         });
-        createAuthStateListener();
+
+        auth = Authentication.getAuth();
+        listener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                user = Authentication.getAuth().getCurrentUser();
+                if (user != null) {
+                    Intent intent = new Intent(LoginActivity.this, GameActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        };
     }
+
 
     private void forgotPassword(){
         auth = Authentication.getAuth();
@@ -93,17 +108,17 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void createAuthStateListener(){
-        listener = firebaseAuth -> {
-            user = Authentication.getAuth().getCurrentUser();
-            if (user != null){
-                Intent intent = new Intent(LoginActivity.this, GameActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                finish();
-            }
-        };
-    }
+//    private void createAuthStateListener(){
+//        listener = firebaseAuth -> {
+//            user = Authentication.getAuth().getCurrentUser();
+//            if (user != null){
+//                Intent intent = new Intent(LoginActivity.this, GameActivity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                startActivity(intent);
+//                finish();
+//            }
+//        };
+//    }
 
     @Override
     public void onStart() {
@@ -115,7 +130,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onStop() {
         super.onStop();
-        auth = Authentication.getAuth();
         auth.removeAuthStateListener(listener);
     }
 }

@@ -47,7 +47,7 @@ public class FilmResultsActivity extends AppCompatActivity {
         filmResultsBinding = ActivityFilmResultsBinding.inflate(getLayoutInflater());
         View view = filmResultsBinding.getRoot();
         setContentView(view);
-
+        fetchFilms("taxi");
         View decorView = getWindow().getDecorView();
         int options = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(options);
