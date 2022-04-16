@@ -23,7 +23,7 @@ public class GameDetailAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         Result result = gameResults.get(position);
-        Game game = new Game(result.getName(),result.getParentPlatforms(),result.getStores(),result.getBackgroundImage(),result.getGenres(),result.getReleased(),result.getMetacritic());
+        Game game = new Game(result.getName(),result.getParentPlatforms(),result.getStores(),result.getBackgroundImage(),result.getGenres(),result.getReleased(),String.valueOf(result.getMetacritic()));
         return GameDetailFragment.newInstance(game);
     }
 

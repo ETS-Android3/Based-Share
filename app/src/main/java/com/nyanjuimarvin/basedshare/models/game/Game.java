@@ -18,13 +18,13 @@ public class Game{
     public String imageUrl;
     public List<Genre> genres;
     public String releaseDate;
-    public int metacritic;
+    public String metacritic;
 
     public Game(){
 
     }
 
-    public Game(String name, List<ParentPlatform> platforms, List<Store> stores, String imageUrl, List<Genre> genres, String releaseDate, int metacritic) {
+    public Game(String name, List<ParentPlatform> platforms, List<Store> stores, String imageUrl, List<Genre> genres, String releaseDate, String metacritic) {
         this.name = name;
         this.platforms = platforms;
         this.stores = stores;
@@ -43,11 +43,11 @@ public class Game{
         this.releaseDate = releaseDate;
     }
 
-    public int getMetacritic() {
+    public String getMetacritic() {
         return metacritic;
     }
 
-    public void setMetacritic(int metacritic) {
+    public void setMetacritic(String metacritic) {
         this.metacritic = metacritic;
     }
 
