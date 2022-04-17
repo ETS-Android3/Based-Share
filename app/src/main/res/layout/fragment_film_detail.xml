@@ -78,18 +78,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.939" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/saveButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+    <ImageButton
+        android:id="@+id/saveFilmBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/save"
         android:contentDescription="@string/Continue"
-        android:ems="10"
+        android:minHeight="48dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/unliked_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.953"
+        app:layout_constraintHorizontal_bias="0.955"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="0.912" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="RedundantDescriptionCheck" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

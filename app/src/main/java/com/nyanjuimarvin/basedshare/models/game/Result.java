@@ -96,6 +96,8 @@ public class Result {
     @Expose
     private List<Genre> genres = null;
 
+    private String pushId;
+
     /**
      * No args constructor for use in serialization
      * 
@@ -135,7 +137,7 @@ public class Result {
      * @param updated
      * @param suggestionsCount
      */
-    public Result(String slug, String name, Integer playtime, List<Platform> platforms, List<Store> stores, String released, Boolean tba, String backgroundImage, Double rating, Integer ratingTop, List<Rating> ratings, Integer ratingsCount, Integer reviewsTextCount, Integer added, AddedByStatus addedByStatus, Integer metacritic, Integer suggestionsCount, String updated, Integer id, String score, List<Tag> tags, EsrbRating esrbRating, Integer reviewsCount, String saturatedColor, String dominantColor, List<ShortScreenshot> shortScreenshots, List<ParentPlatform> parentPlatforms, List<Genre> genres) {
+    public Result(String slug, String name, Integer playtime, List<Platform> platforms, List<Store> stores, String released, Boolean tba, String backgroundImage, Double rating, Integer ratingTop, List<Rating> ratings, Integer ratingsCount, Integer reviewsTextCount, Integer added, AddedByStatus addedByStatus, Integer metacritic, Integer suggestionsCount, String updated, Integer id, String score, List<Tag> tags, EsrbRating esrbRating, Integer reviewsCount, String saturatedColor, String dominantColor, List<ShortScreenshot> shortScreenshots, List<ParentPlatform> parentPlatforms, List<Genre> genres, String pushId) {
         super();
         this.slug = slug;
         this.name = name;
@@ -165,6 +167,7 @@ public class Result {
         this.shortScreenshots = shortScreenshots;
         this.parentPlatforms = parentPlatforms;
         this.genres = genres;
+        this.pushId = pushId;
     }
 
     public String getSlug() {
@@ -392,4 +395,11 @@ public class Result {
         this.genres = genres;
     }
 
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
+    }
 }
