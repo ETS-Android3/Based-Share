@@ -9,30 +9,21 @@ import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.nyanjuimarvin.basedshare.fragments.GameDetailFragment;
-import com.nyanjuimarvin.basedshare.models.game.Game;
 import com.nyanjuimarvin.basedshare.models.game.Result;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameDetailAdapter extends FragmentStateAdapter {
     private final List<Result> gameResults;
-    public GameDetailAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle,List<Result> results) {
+    public GameDetailAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle,List<Result> gameResults) {
         super(fragmentManager, lifecycle);
-        this.gameResults = results;
+        this.gameResults = gameResults;
     }
 
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        Log.d("pos",String.valueOf(position));
-//        Result result = gameResults.get(position);
-        List<Game> games = new ArrayList<>();
-        for(Result result:gameResults) {
-            games.add(new Game(result.getName(), result.getParentPlatforms(), result.getStores(), result.getBackgroundImage(), result.getGenres(), result.getReleased(), String.valueOf(result.getMetacritic())));
-        }
-        Log.d("games",String.valueOf(games.size()));
-        return GameDetailFragment.newInstance(games.get(position));
+        return GameDetailFragment.newInstance(gameResults.get(position));
     }
 
     @Override

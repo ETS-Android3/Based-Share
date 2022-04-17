@@ -1,5 +1,7 @@
 package com.nyanjuimarvin.basedshare.fragments;
 
+import static com.nyanjuimarvin.basedshare.constants.Constants.IMAGE_BASE_URL;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -65,7 +67,7 @@ public class FilmDetailFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         filmDetailBinding =  FragmentFilmDetailBinding.inflate(inflater,container,false);
@@ -75,7 +77,7 @@ public class FilmDetailFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Picasso.get().load(mResult.getBackdropPath()).into(filmDetailBinding.imageView5);
+        Picasso.get().load(IMAGE_BASE_URL + mResult.getPosterPath()).into(filmDetailBinding.imageView5);
         if(mResult.getOriginalTitle() != null){
             filmDetailBinding.filmNameDetail.setText(mResult.getOriginalTitle());
         }else{

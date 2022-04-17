@@ -29,5 +29,6 @@ public class FilmDetailActivity extends AppCompatActivity {
         List<Result> filmResults = Parcels.unwrap(getIntent().getParcelableExtra("films"));
         FilmDetailAdapter adapter = new FilmDetailAdapter(fragmentManager,getLifecycle(),filmResults);
         filmDetailBinding.filmDetailViewPager.setAdapter(adapter);
+        filmDetailBinding.filmDetailViewPager.setCurrentItem(getIntent().getIntExtra("position",0));
     }
 }

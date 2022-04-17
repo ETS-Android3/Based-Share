@@ -98,9 +98,10 @@ public class FilmResultsActivity extends AppCompatActivity {
                     Log.d(this.getClass().getSimpleName(), String.valueOf(response.body().getResults().size()));
                     FilmRecyclerAdapter filmRecyclerAdapter = new FilmRecyclerAdapter(getApplicationContext(), films, new FilmRecyclerAdapter.FilmOnClickListener() {
                         @Override
-                        public void onItemClick(Result result) {
+                        public void onItemClick(Result result,int position) {
                             Intent intent = new Intent(getApplicationContext(),FilmDetailActivity.class);
                             intent.putExtra("films", Parcels.wrap(films));
+                            intent.putExtra("position",position);
                             startActivity(intent);
                         }
                     });

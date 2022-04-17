@@ -27,7 +27,7 @@ public class GameRecyclerAdapter extends RecyclerView.Adapter<GameRecyclerAdapte
     private FragmentGameCardBinding gameCardBinding;
 
     public interface GameClickListener{
-        void onItemClick(Result result);
+        void onItemClick(Result result,int position);
     }
 
     public GameRecyclerAdapter(Context context, List<Result> gameResults, GameClickListener listener) {
@@ -53,7 +53,7 @@ public class GameRecyclerAdapter extends RecyclerView.Adapter<GameRecyclerAdapte
         holder.gameRelease.setText(result.getReleased());
         holder.metacritic.setText(String.format("%s",result.getMetacritic()));
 //        holder.gameRating.setText(String.format("%s / %s",Double.toString(result.getRating()),Double.toString(result.getRatingTop())));
-        holder.bindView(result,listener);
+        holder.bindView(result,listener,position);
 
     }
 
@@ -79,11 +79,11 @@ public class GameRecyclerAdapter extends RecyclerView.Adapter<GameRecyclerAdapte
             metacritic = itemView.findViewById(R.id.metacriticText);
         }
 
-        public void bindView(final Result result,final GameClickListener listener){
+        public void bindView(final Result result,final GameClickListener listener, final int position){
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
-                    listener.onItemClick(result);
+                    listener.onItemClick(result,position);
                 }
             });
         }

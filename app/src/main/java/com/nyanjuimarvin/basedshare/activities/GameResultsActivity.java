@@ -88,17 +88,19 @@ public class GameResultsActivity extends AppCompatActivity {
                 }
 
                 hideProgressBar();
+                recyclerView = gameResultsBinding.gamesRecycler;
+
                 List<Result> gamesList = response.body().getResults();
                 GameRecyclerAdapter gameRecyclerAdapter = new GameRecyclerAdapter(getApplicationContext(), gamesList, new GameRecyclerAdapter.GameClickListener() {
                     @Override
-                    public void onItemClick(Result result) {
+                    public void onItemClick(Result result,int position) {
                         Intent intent = new Intent(getApplicationContext(),GameDetailActivity.class);
-                        intent.putExtra("results", Parcels.wrap(gamesList));
+                        intent.putExtra("games", Parcels.wrap(gamesList));
+                        intent.putExtra("position",position);
                         startActivity(intent);
                     }
                 });
 
-                recyclerView = gameResultsBinding.gamesRecycler;
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setAdapter(gameRecyclerAdapter);

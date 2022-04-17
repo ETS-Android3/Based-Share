@@ -28,7 +28,7 @@ public class FilmRecyclerAdapter extends RecyclerView.Adapter<FilmRecyclerAdapte
 
 
     public interface FilmOnClickListener{
-        void onItemClick(Result result);
+        void onItemClick(Result result, int position);
     }
 
     public FilmRecyclerAdapter(Context context, List<Result> filmResults, FilmOnClickListener listener) {
@@ -60,7 +60,7 @@ public class FilmRecyclerAdapter extends RecyclerView.Adapter<FilmRecyclerAdapte
             }
             holder.filmType.setText(result.getMediaType());
             holder.filmRating.setText(String.valueOf(result.getVoteAverage()));
-            holder.bindView(result, listener);
+            holder.bindView(result, listener, position);
         }
     }
 
@@ -85,11 +85,11 @@ public class FilmRecyclerAdapter extends RecyclerView.Adapter<FilmRecyclerAdapte
         }
 
         //On item click
-        public void bindView(final Result result,final FilmOnClickListener listener){
+        public void bindView(final Result result, final FilmOnClickListener listener, final int position){
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
-                    listener.onItemClick(result);
+                    listener.onItemClick(result, position);
                 }
             });
         }

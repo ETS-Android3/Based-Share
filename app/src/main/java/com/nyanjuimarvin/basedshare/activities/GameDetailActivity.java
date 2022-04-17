@@ -3,6 +3,7 @@ package com.nyanjuimarvin.basedshare.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
@@ -30,10 +31,10 @@ public class GameDetailActivity extends AppCompatActivity {
         View view = gameDetailBinding.getRoot();
         setContentView(view);
 
-        List<Result> results = Parcels.unwrap(getIntent().getParcelableExtra("results"));
+        List<Result> results = Parcels.unwrap(getIntent().getParcelableExtra("games"));
         GameDetailAdapter adapter = new GameDetailAdapter(getSupportFragmentManager(),getLifecycle(),results);
-        gameDetailBinding.gameDetailViewPager.setLayout()
         gameDetailBinding.gameDetailViewPager.setAdapter(adapter);
+        gameDetailBinding.gameDetailViewPager.setCurrentItem(getIntent().getIntExtra("position",0));
 
     }
 }

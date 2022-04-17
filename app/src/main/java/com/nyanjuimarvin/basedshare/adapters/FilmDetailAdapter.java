@@ -7,7 +7,6 @@ import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.nyanjuimarvin.basedshare.fragments.FilmDetailFragment;
-import com.nyanjuimarvin.basedshare.fragments.GameDetailFragment;
 import com.nyanjuimarvin.basedshare.models.film.Result;
 
 import java.util.List;
