@@ -30,9 +30,10 @@ public class GameDetailActivity extends AppCompatActivity {
         View view = gameDetailBinding.getRoot();
         setContentView(view);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
         List<Result> results = Parcels.unwrap(getIntent().getParcelableExtra("results"));
-        GameDetailAdapter adapter = new GameDetailAdapter(fragmentManager,getLifecycle(),results);
+        GameDetailAdapter adapter = new GameDetailAdapter(getSupportFragmentManager(),getLifecycle(),results);
+        gameDetailBinding.gameDetailViewPager.setLayout()
         gameDetailBinding.gameDetailViewPager.setAdapter(adapter);
+
     }
 }
