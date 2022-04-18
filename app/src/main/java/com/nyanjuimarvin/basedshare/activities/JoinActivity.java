@@ -1,6 +1,7 @@
 package com.nyanjuimarvin.basedshare.activities;
 
 import static com.nyanjuimarvin.basedshare.constants.Constants.REQUEST_CODE;
+import static com.nyanjuimarvin.basedshare.constants.Constants.USERNAME_KEY;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -43,6 +45,8 @@ public class JoinActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener listener;
     private FirebaseAuth newUserAuth;
     private FirebaseUser newUser;
+    private SharedPreferences sharedPrefs;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -158,6 +162,8 @@ public class JoinActivity extends AppCompatActivity {
 
         user.updateProfile(addName).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
+                editor = sharedPrefs.edit();
+                editor.putString(USERNAME_KEY,userName);
                 Log.d("user", Objects.requireNonNull(user.getDisplayName()));
                 Toast.makeText(getApplicationContext(), "Name set in firebase", Toast.LENGTH_SHORT).show();
             }
