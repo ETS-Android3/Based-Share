@@ -1,5 +1,6 @@
 package com.nyanjuimarvin.basedshare.fragments;
 
+import static com.nyanjuimarvin.basedshare.constants.Constants.FIREBASE_FILM_NODE;
 import static com.nyanjuimarvin.basedshare.constants.Constants.IMAGE_BASE_URL;
 
 import android.os.Bundle;
@@ -8,13 +9,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.nyanjuimarvin.basedshare.R;
 import com.nyanjuimarvin.basedshare.databinding.FragmentFilmDetailBinding;
 import com.nyanjuimarvin.basedshare.databinding.FragmentGameDetailBinding;
+import com.nyanjuimarvin.basedshare.firebase.authentication.Authentication;
+import com.nyanjuimarvin.basedshare.firebase.database.Database;
 import com.nyanjuimarvin.basedshare.models.film.Result;
 import com.squareup.picasso.Picasso;
 
@@ -37,6 +45,9 @@ public class FilmDetailFragment extends Fragment {
     private String mParam2;
     private Result mResult;
     private FragmentFilmDetailBinding filmDetailBinding;
+    private FirebaseUser user;
+    private FirebaseDatabase firebaseDb;
+    private DatabaseReference dbRef;
 
     public FilmDetailFragment() {
         // Required empty public constructor
@@ -85,5 +96,24 @@ public class FilmDetailFragment extends Fragment {
         }
         filmDetailBinding.overviewDetail.setText(mResult.getOverview());
         filmDetailBinding.voteDetail.setText(String.valueOf(mResult.getVoteAverage()));
+
+        filmDetailBinding.saveFilmBtn.setOnClickListener(view1 -> {
+            user = Authentication.getAuth().getCurrentUser();
+            firebaseDb = Database.getDatabase();
+
+            String userId = user.getUid();
+            //New Database node for film and child node for userId
+            dbRef = firebaseDb.getReference(FIREBASE_FILM_NODE).child(userId);
+            //Reference for each film object
+            DatabaseReference pushRef = dbRef.push();
+
+            //Get Push Key
+            String pushId = pushRef.getKey();
+            mResult.setPushId(pushId);
+
+            pushRef.setValue(mResult).addOnFailureListener(e -> {
+                Log.d("save Failed",e.getLocalizedMessage());
+            });
+        });
     }
 }

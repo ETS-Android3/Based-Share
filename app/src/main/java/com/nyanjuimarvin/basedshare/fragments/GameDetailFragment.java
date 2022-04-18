@@ -119,12 +119,15 @@ public class GameDetailFragment extends Fragment {
         gameDetailBinding.saveGameBtn.setOnClickListener(view1 -> {
             user = Authentication.getAuth().getCurrentUser();
             assert user != null;
+
             String userId = user.getUid();
             firebaseDb = Database.getDatabase();
             firebaseRef = firebaseDb.getReference(FIREBASE_GAME_NODE).child(userId);
+
             DatabaseReference pushRef = firebaseRef.push();
             String pushId = pushRef.getKey();
             mResult.setPushId(pushId);
+
             pushRef.setValue(mResult).addOnFailureListener(e -> {
                 Log.d("save failed",e.getLocalizedMessage());
             });
