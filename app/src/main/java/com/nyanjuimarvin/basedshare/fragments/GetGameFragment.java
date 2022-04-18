@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.nyanjuimarvin.basedshare.R;
 import com.nyanjuimarvin.basedshare.activities.GameResultsActivity;
+import com.nyanjuimarvin.basedshare.activities.SavedGameActivity;
 import com.nyanjuimarvin.basedshare.databinding.FragmentGetGameBinding;
 import com.nyanjuimarvin.basedshare.endpoints.GameEndpoint;
 import com.nyanjuimarvin.basedshare.models.game.GamesResponse;
@@ -78,12 +79,14 @@ public class GetGameFragment extends Fragment {
         getGameBinding = FragmentGetGameBinding.inflate(getLayoutInflater());
         View view = getGameBinding.getRoot();
 
-        getGameBinding.gamesButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), GameResultsActivity.class);
-                startActivity(intent);
-            }
+        getGameBinding.gamesButton.setOnClickListener(view12 -> {
+            Intent intent = new Intent(getContext(), GameResultsActivity.class);
+            startActivity(intent);
+        });
+
+        getGameBinding.savedGamesBtn.setOnClickListener(view1 -> {
+            Intent intent = new Intent(getContext(), SavedGameActivity.class);
+            startActivity(intent);
         });
         return view;
     }

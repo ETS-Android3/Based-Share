@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.nyanjuimarvin.basedshare.R;
 import com.nyanjuimarvin.basedshare.activities.FilmActivity;
 import com.nyanjuimarvin.basedshare.activities.FilmResultsActivity;
+import com.nyanjuimarvin.basedshare.activities.SavedFilmActivity;
 import com.nyanjuimarvin.basedshare.databinding.FragmentGetFilmBinding;
 import com.nyanjuimarvin.basedshare.endpoints.FilmEndpoint;
 import com.nyanjuimarvin.basedshare.models.film.FilmResponse;
@@ -85,6 +86,11 @@ public class GetFilmFragment extends Fragment {
                 Intent intent = new Intent(getContext(), FilmResultsActivity.class);
                 startActivity(intent);
             }
+        });
+
+        getFilmBinding.savedFilmBtn.setOnClickListener(view1 -> {
+            Intent intent = new Intent(getContext(),SavedFilmActivity.class);
+            startActivity(intent);
         });
         return view;
     }
