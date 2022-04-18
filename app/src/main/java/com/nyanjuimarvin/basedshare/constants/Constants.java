@@ -21,4 +21,10 @@ public class Constants {
 
     /* Firebase */
     public static final int REQUEST_CODE = 101;
+    public static final String FIREBASE_GAME_NODE = "Games";
+    public static final String FIREBASE_FILM_NODE = "Films";
+
+    /* Shared Preferences */
+    public static final String USERNAME_KEY = "userName";
+    public static final String USER_MAIL_KEY = "userMail";
 }

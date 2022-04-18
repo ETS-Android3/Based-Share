@@ -1,5 +1,7 @@
 package com.nyanjuimarvin.basedshare.fragments;
 
+import static com.nyanjuimarvin.basedshare.constants.Constants.FIREBASE_GAME_NODE;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,7 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.nyanjuimarvin.basedshare.databinding.FragmentGameDetailBinding;
+import com.nyanjuimarvin.basedshare.firebase.authentication.Authentication;
+import com.nyanjuimarvin.basedshare.firebase.database.Database;
 import com.nyanjuimarvin.basedshare.models.game.Genre;
 import com.nyanjuimarvin.basedshare.models.game.Result;
 import com.nyanjuimarvin.basedshare.models.game.Store;
@@ -42,6 +50,9 @@ public class GameDetailFragment extends Fragment {
 
     private Result mResult;
     private FragmentGameDetailBinding gameDetailBinding;
+    private FirebaseDatabase firebaseDb;
+    private DatabaseReference firebaseRef;
+    private FirebaseUser user;
 
     public GameDetailFragment() {
         // Required empty public constructor
@@ -105,5 +116,18 @@ public class GameDetailFragment extends Fragment {
         gameDetailBinding.ratingDetail.setText(String.valueOf(mResult.getMetacritic()));
         gameDetailBinding.genreDetail.setText(genres.toString());
         gameDetailBinding.storeDetail.setText(stores.toString());
+        gameDetailBinding.saveGameBtn.setOnClickListener(view1 -> {
+            user = Authentication.getAuth().getCurrentUser();
+            assert user != null;
+            String userId = user.getUid();
+            firebaseDb = Database.getDatabase();
+            firebaseRef = firebaseDb.getReference(FIREBASE_GAME_NODE).child(userId);
+            DatabaseReference pushRef = firebaseRef.push();
+            String pushId = pushRef.getKey();
+            mResult.setPushId(pushId);
+            pushRef.setValue(mResult).addOnFailureListener(e -> {
+                Log.d("save failed",e.getLocalizedMessage());
+            });
+        });
     }
 }
