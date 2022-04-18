@@ -19,34 +19,34 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class FilmRecyclerAdapter extends RecyclerView.Adapter<FilmRecyclerAdapter.FilmViewHolder>{
+public class FirebaseFilmsAdapter extends RecyclerView.Adapter<FirebaseFilmsAdapter.FilmViewHolder>{
 
+    private List<Result> films;
     private Context context;
-    private List<Result> filmResults;
-    private FilmOnClickListener listener;
+    private FilmListener listener;
     private FragmentMovieCardBinding movieCardBinding;
 
 
-    public interface FilmOnClickListener{
-        void onItemClick(Result result, int position);
+    public interface FilmListener{
+        void filmClick(Result result, int position);
     }
 
-    public FilmRecyclerAdapter(Context context, List<Result> filmResults, FilmOnClickListener listener) {
+    public FirebaseFilmsAdapter(List<Result> films, Context context, FilmListener listener) {
+        this.films = films;
         this.context = context;
-        this.filmResults = filmResults;
         this.listener = listener;
     }
 
     @NonNull
     @Override
-    public FilmRecyclerAdapter.FilmViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_movie_card,parent,false);
+    public FirebaseFilmsAdapter.FilmViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_movie_card, parent, false);
         return new FilmViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FilmRecyclerAdapter.FilmViewHolder holder, int position) {
-        Result result = filmResults.get(position);
+    public void onBindViewHolder(@NonNull FirebaseFilmsAdapter.FilmViewHolder holder, int position) {
+        Result result = films.get(position);
         if( result.getMediaType().equals("movie") || result.getMediaType().equals("tv") ) {
             if(result.getPosterPath() == null){
                 Picasso.get().load("https://m.media-amazon.com/images/I/71DFOv71rNL._AC_SL1000_.jpg").into(holder.filmImage);
@@ -66,10 +66,10 @@ public class FilmRecyclerAdapter extends RecyclerView.Adapter<FilmRecyclerAdapte
 
     @Override
     public int getItemCount() {
-        return filmResults.size();
+        return films.size();
     }
 
-    public static class FilmViewHolder extends RecyclerView.ViewHolder{
+    public static class FilmViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView filmImage;
         private TextView filmTitle;
@@ -84,9 +84,8 @@ public class FilmRecyclerAdapter extends RecyclerView.Adapter<FilmRecyclerAdapte
             filmRating = itemView.findViewById(R.id.ratingText);
         }
 
-        //On item click
-        public void bindView(final Result result, final FilmOnClickListener listener, final int position){
-            itemView.setOnClickListener(view -> listener.onItemClick(result, position));
+        public void bindView(final Result result, final FilmListener listener, final int position){
+            itemView.setOnClickListener(view -> listener.filmClick(result, position));
         }
     }
 }

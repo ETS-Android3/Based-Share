@@ -1,7 +1,5 @@
 package com.nyanjuimarvin.basedshare.adapters;
 
-
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,53 +11,48 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nyanjuimarvin.basedshare.R;
-import com.nyanjuimarvin.basedshare.databinding.FragmentGameCardBinding;
 import com.nyanjuimarvin.basedshare.models.game.Result;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class GameRecyclerAdapter extends RecyclerView.Adapter<GameRecyclerAdapter.GameViewHolder>{
+public class FirebaseGamesAdapter extends RecyclerView.Adapter<FirebaseGamesAdapter.GameViewHolder>{
 
+    private List<Result> results;
     private Context context;
-    private List<Result> gameResults;
-    private GameClickListener listener;
-    private FragmentGameCardBinding gameCardBinding;
+    private GameListener listener;
 
-    public interface GameClickListener{
-        void onItemClick(Result result,int position);
+    public FirebaseGamesAdapter(List<Result> results, Context context, GameListener listener) {
+        this.results = results;
+        this.context = context;
+        this.listener = listener;
     }
 
-    public GameRecyclerAdapter(Context context, List<Result> gameResults, GameClickListener listener) {
-        this.context = context;
-        this.gameResults = gameResults;
-        this.listener = listener;
+    public interface GameListener{
+        void gameCLick(Result result, int position);
     }
 
     @NonNull
     @Override
-    public GameRecyclerAdapter.GameViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_game_card,parent,false);
+    public FirebaseGamesAdapter.GameViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_game_card, parent, false);
         return new GameViewHolder(view);
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull GameRecyclerAdapter.GameViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FirebaseGamesAdapter.GameViewHolder holder, int position) {
         String placeholder = "Custom";
-        Result result = gameResults.get(position);
+        Result result = results.get(position);
         Picasso.get().load(result.getBackgroundImage()).into(holder.gameImage);
         holder.gameName.setText(result.getName());
         holder.gameRelease.setText(result.getReleased());
         holder.metacritic.setText(String.format("%s",result.getMetacritic()));
-//        holder.gameRating.setText(String.format("%s / %s",Double.toString(result.getRating()),Double.toString(result.getRatingTop())));
         holder.bindView(result,listener,position);
-
     }
 
     @Override
     public int getItemCount() {
-        return gameResults.size();
+        return results.size();
     }
 
     public static class GameViewHolder extends RecyclerView.ViewHolder{
@@ -70,6 +63,7 @@ public class GameRecyclerAdapter extends RecyclerView.Adapter<GameRecyclerAdapte
         private TextView gameRating;
         private TextView metacritic;
 
+
         public GameViewHolder(@NonNull View itemView) {
             super(itemView);
             gameImage = itemView.findViewById(R.id.gameImage);
@@ -79,8 +73,8 @@ public class GameRecyclerAdapter extends RecyclerView.Adapter<GameRecyclerAdapte
             metacritic = itemView.findViewById(R.id.metacriticText);
         }
 
-        public void bindView(final Result result,final GameClickListener listener, final int position){
-            itemView.setOnClickListener(view -> listener.onItemClick(result,position));
+        public void bindView(final Result result, final GameListener listener, final int position){
+            itemView.setOnClickListener(view -> listener.gameCLick(result,position));
         }
     }
 }
