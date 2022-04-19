@@ -1,4 +1,4 @@
-package com.nyanjuimarvin.basedshare.interfaces;
+package com.nyanjuimarvin.basedshare.gestures;
 
 import androidx.recyclerview.widget.RecyclerView;
 
