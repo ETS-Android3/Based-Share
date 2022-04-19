@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -109,13 +110,13 @@ public class GameDetailFragment extends Fragment {
         Log.d("image",mResult.getBackgroundImage());
         Log.d("name",mResult.getName());
         Log.d("rating",mResult.getMetacritic().toString());
-        Log.d("genres",genres.toString());
-        Log.d("stores",stores.toString());
+        Log.d("genres",TextUtils.join(", ",genres));
+        Log.d("stores", TextUtils.join(", ",stores));
         Picasso.get().load(mResult.getBackgroundImage()).into(gameDetailBinding.gameDetailImage);
         gameDetailBinding.gameNameDetail.setText(mResult.getName());
         gameDetailBinding.ratingDetail.setText(String.valueOf(mResult.getMetacritic()));
-        gameDetailBinding.genreDetail.setText(genres.toString());
-        gameDetailBinding.storeDetail.setText(stores.toString());
+        gameDetailBinding.genreDetail.setText(TextUtils.join(", ",genres));
+        gameDetailBinding.storeDetail.setText(TextUtils.join(", ",stores));
         gameDetailBinding.saveGameBtn.setOnClickListener(view1 -> {
             user = Authentication.getAuth().getCurrentUser();
             assert user != null;
