@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/bottom_navigation_state_color.xml" value="0.136" />
         <entry key="app/src/main/res/drawable/button1.xml" value="0.136" />
+        <entry key="app/src/main/res/drawable/delete_icon.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable/input_field.xml" value="0.136" />
