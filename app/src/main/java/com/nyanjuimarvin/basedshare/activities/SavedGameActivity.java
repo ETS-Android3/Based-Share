@@ -4,6 +4,7 @@ import static com.nyanjuimarvin.basedshare.constants.Constants.FIREBASE_GAME_NOD
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,12 +19,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
-import com.nyanjuimarvin.basedshare.R;
 import com.nyanjuimarvin.basedshare.adapters.FirebaseGamesAdapter;
 import com.nyanjuimarvin.basedshare.databinding.ActivitySavedGameBinding;
 import com.nyanjuimarvin.basedshare.firebase.authentication.Authentication;
 import com.nyanjuimarvin.basedshare.firebase.database.Database;
 import com.nyanjuimarvin.basedshare.gestures.ItemTouchCallback;
+import com.nyanjuimarvin.basedshare.gestures.ItemTouchHelperCallback;
 import com.nyanjuimarvin.basedshare.models.game.Result;
 
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ public class SavedGameActivity extends AppCompatActivity implements ItemTouchCal
     private FirebaseGamesAdapter gameAdapter;
     private DatabaseReference dbRef;
     private FirebaseUser user;
+    List<Result> results;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,7 @@ public class SavedGameActivity extends AppCompatActivity implements ItemTouchCal
         View view = savedGameBinding.getRoot();
         setContentView(view);
 
-        List<Result> results = new ArrayList<>();
+         results = new ArrayList<>();
         user = Authentication.getAuth().getCurrentUser();
         dbRef = Database.getDatabase().getReference(FIREBASE_GAME_NODE).child(user.getUid());
 
@@ -53,6 +55,10 @@ public class SavedGameActivity extends AppCompatActivity implements ItemTouchCal
         savedGameBinding.savedGameRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         savedGameBinding.savedGameRecycler.setAdapter(gameAdapter);
 
+
+        ItemTouchHelper.Callback callback = new ItemTouchHelperCallback(this);
+        ItemTouchHelper helper = new ItemTouchHelper(callback);
+        helper.attachToRecyclerView(savedGameBinding.savedGameRecycler);
 
         dbRef.addValueEventListener(new ValueEventListener(){
 
@@ -79,7 +85,8 @@ public class SavedGameActivity extends AppCompatActivity implements ItemTouchCal
 
     @Override
     public void onMoveItem(int oldPosition, int newPosition) {
-
+        results.add(newPosition, results.remove(oldPosition));
+        savedGameBinding.getGameRecycler.notify
     }
 
     @Override

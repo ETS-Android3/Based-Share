@@ -77,4 +77,15 @@ public class FirebaseGamesAdapter extends RecyclerView.Adapter<FirebaseGamesAdap
             itemView.setOnClickListener(view -> listener.gameCLick(result,position));
         }
     }
+
+    public void removeItem(int position){
+        results.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void restoreItem(Result result, int position){
+        results.add(position,result);
+        notifyItemInserted(position);
+    }
+
 }
