@@ -86,11 +86,11 @@ public class SavedGameActivity extends AppCompatActivity implements ItemTouchCal
     @Override
     public void onMoveItem(int oldPosition, int newPosition) {
         results.add(newPosition, results.remove(oldPosition));
-        savedGameBinding.getGameRecycler.notify
+        gameAdapter.notifyItemMoved(oldPosition,newPosition);
     }
 
     @Override
     public void onItemSwipe(RecyclerView.ViewHolder viewHolder, int position) {
-
+        gameAdapter.removeItem(viewHolder.getAdapterPosition());
     }
 }
