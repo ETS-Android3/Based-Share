@@ -5,6 +5,7 @@ import static com.nyanjuimarvin.basedshare.constants.Constants.FIREBASE_GAME_NOD
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -22,12 +23,13 @@ import com.nyanjuimarvin.basedshare.adapters.FirebaseGamesAdapter;
 import com.nyanjuimarvin.basedshare.databinding.ActivitySavedGameBinding;
 import com.nyanjuimarvin.basedshare.firebase.authentication.Authentication;
 import com.nyanjuimarvin.basedshare.firebase.database.Database;
+import com.nyanjuimarvin.basedshare.gestures.ItemTouchCallback;
 import com.nyanjuimarvin.basedshare.models.game.Result;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SavedGameActivity extends AppCompatActivity {
+public class SavedGameActivity extends AppCompatActivity implements ItemTouchCallback {
 
     private ActivitySavedGameBinding savedGameBinding;
     private FirebaseGamesAdapter gameAdapter;
@@ -73,5 +75,15 @@ public class SavedGameActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onMoveItem(int oldPosition, int newPosition) {
+
+    }
+
+    @Override
+    public void onItemSwipe(RecyclerView.ViewHolder viewHolder, int position) {
+
     }
 }

@@ -22,12 +22,13 @@ import com.nyanjuimarvin.basedshare.adapters.FirebaseFilmsAdapter;
 import com.nyanjuimarvin.basedshare.databinding.ActivitySavedFilmBinding;
 import com.nyanjuimarvin.basedshare.firebase.authentication.Authentication;
 import com.nyanjuimarvin.basedshare.firebase.database.Database;
+import com.nyanjuimarvin.basedshare.gestures.ItemTouchCallback;
 import com.nyanjuimarvin.basedshare.models.film.Result;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SavedFilmActivity extends AppCompatActivity {
+public class SavedFilmActivity extends AppCompatActivity implements ItemTouchCallback {
 
     private ActivitySavedFilmBinding savedFilmBinding;
     private FirebaseFilmsAdapter adapter;
@@ -69,5 +70,15 @@ public class SavedFilmActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onMoveItem(int oldPosition, int newPosition) {
+
+    }
+
+    @Override
+    public void onItemSwipe(RecyclerView.ViewHolder viewHolder, int position) {
+
     }
 }
