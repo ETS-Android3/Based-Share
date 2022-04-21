@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -117,6 +118,7 @@ public class GameDetailFragment extends Fragment {
         gameDetailBinding.ratingDetail.setText(String.valueOf(mResult.getMetacritic()));
         gameDetailBinding.genreDetail.setText(TextUtils.join(", ",genres));
         gameDetailBinding.storeDetail.setText(TextUtils.join(", ",stores));
+
         gameDetailBinding.saveGameBtn.setOnClickListener(view1 -> {
             user = Authentication.getAuth().getCurrentUser();
             assert user != null;
@@ -132,6 +134,8 @@ public class GameDetailFragment extends Fragment {
             pushRef.setValue(mResult).addOnFailureListener(e -> {
                 Log.d("save failed",e.getLocalizedMessage());
             });
+
+            Toast.makeText(getContext(),"Saved", Toast.LENGTH_LONG).show();
         });
     }
 }

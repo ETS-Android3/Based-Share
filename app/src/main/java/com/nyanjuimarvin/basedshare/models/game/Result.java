@@ -98,12 +98,15 @@ public class Result {
 
     private String pushId;
 
+    private String index;
+
     /**
      * No args constructor for use in serialization
      * 
      */
     public Result() {
     }
+
 
     /**
      * 
@@ -137,8 +140,8 @@ public class Result {
      * @param updated
      * @param suggestionsCount
      */
-    public Result(String slug, String name, Integer playtime, List<Platform> platforms, List<Store> stores, String released, Boolean tba, String backgroundImage, Double rating, Integer ratingTop, List<Rating> ratings, Integer ratingsCount, Integer reviewsTextCount, Integer added, AddedByStatus addedByStatus, Integer metacritic, Integer suggestionsCount, String updated, Integer id, String score, List<Tag> tags, EsrbRating esrbRating, Integer reviewsCount, String saturatedColor, String dominantColor, List<ShortScreenshot> shortScreenshots, List<ParentPlatform> parentPlatforms, List<Genre> genres, String pushId) {
-        super();
+
+    public Result(String slug, String name, Integer playtime, List<Platform> platforms, List<Store> stores, String released, Boolean tba, String backgroundImage, Double rating, Integer ratingTop, List<Rating> ratings, Integer ratingsCount, Integer reviewsTextCount, Integer added, AddedByStatus addedByStatus, Integer metacritic, Integer suggestionsCount, String updated, Integer id, String score, List<Tag> tags, EsrbRating esrbRating, Integer reviewsCount, String saturatedColor, String dominantColor, List<ShortScreenshot> shortScreenshots, List<ParentPlatform> parentPlatforms, List<Genre> genres, String pushId, String index) {
         this.slug = slug;
         this.name = name;
         this.playtime = playtime;
@@ -168,6 +171,7 @@ public class Result {
         this.parentPlatforms = parentPlatforms;
         this.genres = genres;
         this.pushId = pushId;
+        this.index = index;
     }
 
     public String getSlug() {
@@ -401,5 +405,13 @@ public class Result {
 
     public void setPushId(String pushId) {
         this.pushId = pushId;
+    }
+
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
     }
 }

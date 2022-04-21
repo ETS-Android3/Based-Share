@@ -23,6 +23,7 @@ public class Constants {
     public static final int REQUEST_CODE = 101;
     public static final String FIREBASE_GAME_NODE = "Games";
     public static final String FIREBASE_FILM_NODE = "Films";
+    public static final String FIREBASE_INDEX = "index";
 
     /* Shared Preferences */
     public static final String USERNAME_KEY = "userName";

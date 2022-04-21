@@ -88,4 +88,14 @@ public class FirebaseFilmsAdapter extends RecyclerView.Adapter<FirebaseFilmsAdap
             itemView.setOnClickListener(view -> listener.filmClick(result, position));
         }
     }
+
+    public void removeItem(int position){
+        films.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void restoreItem(Result result, int position){
+        films.add(position,result);
+        notifyItemInserted(position);
+    }
 }

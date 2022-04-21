@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +27,8 @@ import com.nyanjuimarvin.basedshare.firebase.database.Database;
 import com.nyanjuimarvin.basedshare.gestures.ItemTouchCallback;
 import com.nyanjuimarvin.basedshare.gestures.ItemTouchHelperCallback;
 import com.nyanjuimarvin.basedshare.models.game.Result;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +52,12 @@ public class SavedGameActivity extends AppCompatActivity implements ItemTouchCal
         user = Authentication.getAuth().getCurrentUser();
         dbRef = Database.getDatabase().getReference(FIREBASE_GAME_NODE).child(user.getUid());
 
-        gameAdapter = new FirebaseGamesAdapter(results, getApplicationContext(), (result, position) -> Toast.makeText(getApplicationContext(),"Clicked",Toast.LENGTH_LONG).show());
+        gameAdapter = new FirebaseGamesAdapter(results, getApplicationContext(), (result, position) -> {
+            Intent intent = new Intent(getApplicationContext(),GameDetailActivity.class);
+            intent.putExtra("games", Parcels.wrap(results));
+            intent.putExtra("position",position);
+            startActivity(intent);
+        });
 
         savedGameBinding.savedGameRecycler.setHasFixedSize(true);
         savedGameBinding.savedGameRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));

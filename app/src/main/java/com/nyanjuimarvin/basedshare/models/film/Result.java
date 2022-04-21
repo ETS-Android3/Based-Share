@@ -72,6 +72,8 @@ public class Result {
 
     public String pushId;
 
+    public String index;
+
     /**
      * No args constructor for use in serialization
      * 
@@ -101,7 +103,7 @@ public class Result {
      * @param adult
      * @param posterPath
      */
-    public Result(String backdropPath, String firstAirDate, List<Integer> genreIds, Integer id, String mediaType, String name, List<String> originCountry, String originalLanguage, String originalName, String overview, Double popularity, String posterPath, Float voteAverage, int voteCount, Boolean adult, String originalTitle, String releaseDate, String title, Boolean video, String pushId) {
+    public Result(String backdropPath, String firstAirDate, List<Integer> genreIds, Integer id, String mediaType, String name, List<String> originCountry, String originalLanguage, String originalName, String overview, Double popularity, String posterPath, Float voteAverage, int voteCount, Boolean adult, String originalTitle, String releaseDate, String title, Boolean video, String pushId, String index) {
         super();
         //Add original specifier in image path
         this.backdropPath = backdropPath;
@@ -124,6 +126,7 @@ public class Result {
         this.title = title;
         this.video = video;
         this.pushId = pushId;
+        this.index = index;
     }
 
     public String getBackdropPath() {
@@ -284,5 +287,13 @@ public class Result {
 
     public void setPushId(String pushId) {
         this.pushId = pushId;
+    }
+
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
     }
 }
